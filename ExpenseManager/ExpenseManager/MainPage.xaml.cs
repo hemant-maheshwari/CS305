@@ -16,6 +16,7 @@ namespace ExpenseManager
         public MainPage()
         {
             InitializeComponent();
+           
         }
     }
 }

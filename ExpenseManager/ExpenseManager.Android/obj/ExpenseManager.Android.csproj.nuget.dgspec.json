@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj": {}
+    "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj": {}
   },
   "projects": {
-    "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj": {
+    "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj",
+        "projectUniqueName": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj",
         "projectName": "ExpenseManager.Android",
-        "projectPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj",
-        "packagesPath": "C:\\Users\\heman\\.nuget\\packages\\",
-        "outputPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.Android\\obj\\",
+        "projectPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.Android\\ExpenseManager.Android.csproj",
+        "packagesPath": "C:\\Users\\Kyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\heman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
-                "projectPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj"
+              "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
+                "projectPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj"
               }
             }
           }
@@ -54,20 +54,20 @@
         }
       }
     },
-    "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
+    "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
+        "projectUniqueName": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
         "projectName": "ExpenseManager",
-        "projectPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
-        "packagesPath": "C:\\Users\\heman\\.nuget\\packages\\",
-        "outputPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\obj\\",
+        "projectPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
+        "packagesPath": "C:\\Users\\Kyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\heman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

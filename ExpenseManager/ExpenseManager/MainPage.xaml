@@ -6,11 +6,14 @@
              mc:Ignorable="d"
              x:Class="ExpenseManager.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout VerticalOptions="Center" Spacing="125">
+        <Entry  Placeholder=" Username" TextColor="White"  PlaceholderColor="White"  BackgroundColor="Black" FontSize="45" HeightRequest="100" VerticalTextAlignment="Center" Margin="15"/>
+        <Entry Placeholder=" Password" TextColor="White" PlaceholderColor="White" BackgroundColor="Black" FontSize="45"  HeightRequest="100" VerticalTextAlignment="Center" Margin="15"/>
+        <StackLayout Spacing="115">
+            <Button Text="Login" TextColor="White" BackgroundColor="Black" HorizontalOptions="Center" FontSize="45"  Padding="150,30,150,30" />
+            <Button Text="Sign Up" TextColor="White"  BackgroundColor="Black" HorizontalOptions="Center" FontSize="45"  Padding="130,30,130,30"/>
+            <Button Text="Forgot Password" TextColor="White" BackgroundColor="Black" HorizontalOptions="Center" FontSize="45" Padding="200,30,200,30"/>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>

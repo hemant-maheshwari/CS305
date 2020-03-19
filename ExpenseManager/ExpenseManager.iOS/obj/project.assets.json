@@ -1016,24 +1016,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\heman\\.nuget\\packages\\": {},
+    "C:\\Users\\Kyler\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
       "projectName": "ExpenseManager.iOS",
-      "projectPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
-      "packagesPath": "C:\\Users\\heman\\.nuget\\packages\\",
-      "outputPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager.iOS\\obj\\",
+      "projectPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
+      "packagesPath": "C:\\Users\\Kyler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\heman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1047,8 +1047,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
-              "projectPath": "C:\\Xamarin\\ExpenseManager\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj"
+            "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
+              "projectPath": "C:\\Users\\Kyler\\Source\\Repos\\CS3054\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj"
             }
           }
         }

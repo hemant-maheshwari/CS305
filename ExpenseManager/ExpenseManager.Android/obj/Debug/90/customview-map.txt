@@ -27,8 +27,10 @@ foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\Xamarin\ExpenseManager\ExpenseManager\ExpenseManager.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
 item;C:\Xamarin\ExpenseManager\ExpenseManager\ExpenseManager.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+item;obj\Debug\90\res\layout\menu1.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;C:\Xamarin\ExpenseManager\ExpenseManager\ExpenseManager.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
+menu;obj\Debug\90\res\layout\menu1.xml
 paths;C:\Xamarin\ExpenseManager\ExpenseManager\ExpenseManager.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\Xamarin\ExpenseManager\ExpenseManager\ExpenseManager.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
 resources;obj\Debug\90\res\values\colors.xml
