@@ -1937,11 +1937,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager.Android/ExpenseManager.Android.csproj",
+      "projectUniqueName": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.Android/ExpenseManager.Android.csproj",
       "projectName": "ExpenseManager.Android",
-      "projectPath": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager.Android/ExpenseManager.Android.csproj",
+      "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.Android/ExpenseManager.Android.csproj",
       "packagesPath": "/Users/adriangallant/.nuget/packages/",
-      "outputPath": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager.Android/obj/",
+      "outputPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.Android/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -1956,8 +1956,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj": {
-              "projectPath": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj"
+            "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj": {
+              "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj"
             }
           }
         }

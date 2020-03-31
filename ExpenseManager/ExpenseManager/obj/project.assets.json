@@ -572,11 +572,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
+      "projectUniqueName": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
       "projectName": "ExpenseManager",
-      "projectPath": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
+      "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
       "packagesPath": "/Users/adriangallant/.nuget/packages/",
-      "outputPath": "/Users/adriangallant/Documents/GitHub/CS305/ExpenseManager/ExpenseManager/obj/",
+      "outputPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/adriangallant/.config/NuGet/NuGet.Config"
@@ -626,7 +626,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
       }
     }
   }
