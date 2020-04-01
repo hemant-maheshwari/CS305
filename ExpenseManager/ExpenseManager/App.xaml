@@ -6,6 +6,6 @@
              mc:Ignorable="d"
              x:Class="ExpenseManager.App">
     <Application.Resources>
-
+       
     </Application.Resources>
 </Application>

@@ -23,17 +23,29 @@ namespace ExpenseManager.Views
             ActivitySpinner.IsVisible = false;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
 
-            entryUsername.Completed += (s,e) => entryPassword.Focus();
-            entryPassword.Completed += (s, e) => SignInProcedure(s, e); 
+            entryUsername.Completed += (s, e) => entryPassword.Focus();
+            entryPassword.Completed += (s, e) => SignInProcedure(s, e);
         }
 
-        void SignInProcedure(object sender, EventArgs e){
+        void SignInProcedure(object sender, EventArgs e)
+        {
             User user = new User(entryUsername.Text, entryPassword.Text);
-            if (user.checkInformation()){
-                DisplayAlert("Login","Login Success","Okay");
-            }else {
-                DisplayAlert("Login","Incorrect Login,empty username or password.", "Okay");
+            if (user.checkInformation())
+            {
+                //DisplayAlert("Login", "Login Success", "Okay");
+                App.Current.MainPage = new ExpensesPage();
+            }
+            else
+            {
+               DisplayAlert("Login", "Incorrect Login,empty username or password.", "Okay");
             }
         }
-    }
-}
+                 void SignUpButton(object sender, EventArgs e)
+                {
+                    App.Current.MainPage = new SignUpPage();
+                }
+            }
+        }
+ 
+
+

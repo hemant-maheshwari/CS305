@@ -11,21 +11,24 @@
 
             <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand">
                 <StackLayout.Padding>
-                    <OnIdiom x:TypeArguments="Thickness">
+                    <OnIdiom x:TypeArguments="Thickness" >
                         <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
                         <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
                     </OnIdiom>
-                </StackLayout.Padding>
+                    </StackLayout.Padding>
 
-                <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="False"/>
+                <ActivityIndicator x:Name="ActivitySpinner" Color="DarkOrange" IsRunning="False"/>
 
                 <Label x:Name="lblUsername" Text="Username"/>
                 <Entry x:Name="entryUsername" Placeholder="Username"/>
                 <Label x:Name="lblPassword" Text="Password"/>
                 <Entry x:Name="entryPassword" Placeholder="Password"/>
-                <Button x:Name="btnSignIn" Text="Sign In" Clicked="SignInProcedure"/>
-
+                <Button x:Name="btnSignIn" Text="Log In" Clicked="SignInProcedure"/>
+                <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="SignUpButton"/>
+                <Button x:Name="btnForgotPassword" Text="Forgot Password" Clicked="SignInProcedure" />
+                
             </StackLayout>
          </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
