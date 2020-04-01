@@ -56,7 +56,7 @@
                 </StackLayout>
             </Frame>
         </ContentView>
-    </StackLayout>
+   </StackLayout>
 </ContentPage>
 <!--End of Expenses Page-->           
                 

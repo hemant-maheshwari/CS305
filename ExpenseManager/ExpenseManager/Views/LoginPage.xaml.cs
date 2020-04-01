@@ -24,10 +24,15 @@ namespace ExpenseManager.Views
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
 
             entryUsername.Completed += (s, e) => entryPassword.Focus();
-            entryPassword.Completed += (s, e) => SignInProcedure(s, e);
+            entryPassword.Completed += (s, e) => signInButton(s, e);
         }
 
-        public void SignInProcedure(object sender, EventArgs e)
+        public void signUpButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new SignUpPage();
+        }
+
+        public void signInButton(object sender, EventArgs e)
         {
             User user = new User(entryUsername.Text, entryPassword.Text);
             if (user.checkInformation())
@@ -37,15 +42,16 @@ namespace ExpenseManager.Views
             }
             else
             {
-               DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
+                DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
             }
         }
-                public void SignUpButton(object sender, EventArgs e)
-                {
-                    App.Current.MainPage = new SignUpPage();
-                }
-            }
+
+        public void forgotPasswordButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new ForgotPasswordPage();
         }
+    }
+}
  
 
 
