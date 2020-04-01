@@ -15,11 +15,11 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        void Init()
+        public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-            lblUsername.TextColor = Constants.mainTextColor;
-            lblPassword.TextColor = Constants.mainTextColor;
+            lblUsername.TextColor = Constants.initialScreensTextColor;
+            lblPassword.TextColor = Constants.initialScreensTextColor;
             ActivitySpinner.IsVisible = false;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
 
@@ -27,7 +27,7 @@ namespace ExpenseManager.Views
             entryPassword.Completed += (s, e) => SignInProcedure(s, e);
         }
 
-        void SignInProcedure(object sender, EventArgs e)
+        public void SignInProcedure(object sender, EventArgs e)
         {
             User user = new User(entryUsername.Text, entryPassword.Text);
             if (user.checkInformation())
@@ -37,10 +37,10 @@ namespace ExpenseManager.Views
             }
             else
             {
-               DisplayAlert("Login", "Incorrect Login,empty username or password.", "Okay");
+               DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
             }
         }
-                 void SignUpButton(object sender, EventArgs e)
+                public void SignUpButton(object sender, EventArgs e)
                 {
                     App.Current.MainPage = new SignUpPage();
                 }

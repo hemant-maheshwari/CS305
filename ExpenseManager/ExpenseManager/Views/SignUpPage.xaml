@@ -23,12 +23,12 @@
 
                 <ActivityIndicator x:Name="Spinner" Color="DarkOrange" IsRunning="False"/>
                 
-                <Entry Placeholder="First Name"></Entry>
-                <Entry Placeholder="Last Name"></Entry>
-                <Entry Placeholder="Email"></Entry>
-                <Entry Placeholder="Password" IsPassword="True"></Entry>
-                <Entry Placeholder="Confirm Password" IsPassword="True"></Entry>
-                <Entry Placeholder= " Enter Phone Number"></Entry>
+                <Entry Placeholder="First Name" PlaceholderColor="LightGray" TextColor="White"></Entry>
+                <Entry Placeholder="Last Name" PlaceholderColor="LightGray" TextColor="White"></Entry>
+                <Entry Placeholder="Email" PlaceholderColor="LightGray" TextColor="White"></Entry>
+                <Entry Placeholder="Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"></Entry>
+                <Entry Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"></Entry>
+                <Entry Placeholder= "Enter Phone Number" PlaceholderColor="LightGray" TextColor="White"></Entry>
                 <Button Text="Sign Up" ></Button >
                 <Label Text="Already have account? Sign In" TextColor="DarkOrange"></Label>
             </StackLayout>

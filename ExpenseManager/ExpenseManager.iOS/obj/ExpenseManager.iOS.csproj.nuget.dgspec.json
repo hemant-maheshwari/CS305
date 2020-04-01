@@ -1,39 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj": {}
+    "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.iOS/ExpenseManager.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj": {
+    "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.iOS/ExpenseManager.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
+        "projectUniqueName": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.iOS/ExpenseManager.iOS.csproj",
         "projectName": "ExpenseManager.iOS",
-        "projectPath": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager.iOS\\ExpenseManager.iOS.csproj",
-        "packagesPath": "C:\\Users\\Banso\\.nuget\\packages\\",
-        "outputPath": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager.iOS\\obj\\",
+        "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.iOS/ExpenseManager.iOS.csproj",
+        "packagesPath": "/Users/adriangallant/.nuget/packages/",
+        "outputPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager.iOS/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Banso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/adriangallant/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "xamarinios10"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
-                "projectPath": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj"
+              "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj": {
+                "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj"
               }
             }
           }
@@ -65,28 +59,22 @@
         }
       }
     },
-    "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj": {
+    "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
+        "projectUniqueName": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
         "projectName": "ExpenseManager",
-        "projectPath": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\ExpenseManager.csproj",
-        "packagesPath": "C:\\Users\\Banso\\.nuget\\packages\\",
-        "outputPath": "C:\\Xamarin\\Adrian\\CS305\\ExpenseManager\\ExpenseManager\\obj\\",
+        "projectPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/ExpenseManager.csproj",
+        "packagesPath": "/Users/adriangallant/.nuget/packages/",
+        "outputPath": "/Users/adriangallant/CS305/ExpenseManager/ExpenseManager/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Banso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/adriangallant/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -128,7 +116,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
         }
       }
     }

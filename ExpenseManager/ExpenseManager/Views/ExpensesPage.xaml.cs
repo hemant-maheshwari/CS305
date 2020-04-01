@@ -18,12 +18,11 @@ namespace ExpenseManager.Views
             Init();
 
         }
-        void Init()
+
+        public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
             
-
-
         }
     }
 }
