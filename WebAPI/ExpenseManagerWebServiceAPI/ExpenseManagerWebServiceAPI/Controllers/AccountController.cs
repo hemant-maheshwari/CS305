@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ExpenseManager.Models;
+using ExpenseManagerWebServiceAPI.Handlers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using PocketClosetWebServiceAPI.Models;
 
 namespace ExpenseManagerWebServiceAPI.Controllers
 {
@@ -15,14 +18,39 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         public AccountController(IConfiguration config) {
             this.config = config;
         }
-        public JsonResult createAccount(Account account)
+
+        [Route("create")]
+        public JsonResult createAccount([FromBody] Account account)
         {
-            throw new NotImplementedException();
+            AccountDataHandler accountDataHandler = new AccountDataHandler(config);
+            accountDataHandler.userId = account.userId;
+            accountDataHandler.firstName= account.firstName;
+            accountDataHandler.lastName = account.lastName;
+            accountDataHandler.email = account.email;
+            accountDataHandler.phone = account.phone;
+            bool result = accountDataHandler.createAccount();
+            Response response = new Response();
+            response.status = result;
+            return Json(response);
         }
 
+        [Route("get/{userId}")]
+        [HttpGet]
         public JsonResult getAccount(int userId)
         {
-            throw new NotImplementedException();
+            Response response = new Response();
+            try
+            {
+                AccountDataHandler accountDataHandler = new AccountDataHandler(config);
+                Account account = accountDataHandler.getAccount(userId);
+                response.status = true;
+                response.data = JsonConvert.SerializeObject(account);
+            }
+            catch (Exception ex) {
+                response.message = ex.Message;
+                response.status = false;
+            }
+            return Json(response);            
         }
 
         public IActionResult Index()

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ExpenseManager.Models;
+﻿using ExpenseManager.Models;
+using ExpenseManagerWebServiceAPI.Handlers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using PocketClosetWebServiceAPI.Models;
 
 namespace ExpenseManagerWebServiceAPI.Controllers
 {
@@ -15,9 +14,20 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         public UserController(IConfiguration config) {
             this.config = config;
         }
-        public JsonResult createUser(User user)
+
+        [Route("create")]
+        [HttpPost]
+        public JsonResult createUser([FromBody] User user)
         {
-            throw new NotImplementedException();
+            UserDataHandler userDataHandler = new UserDataHandler(config);
+            userDataHandler.username = user.username;
+            userDataHandler.password = user.password;
+            int userId = userDataHandler.createUser();
+            user.userId = userId;
+            Response response = new Response();
+            response.data = JsonConvert.SerializeObject(user);
+            response.status = true;
+            return Json(response);
         }
 
         public IActionResult Index()
@@ -25,9 +35,17 @@ namespace ExpenseManagerWebServiceAPI.Controllers
             return View();
         }
 
-        public JsonResult updateUser(User user)
+        [Route("update")]
+        [HttpPost]
+        public JsonResult updateUser([FromBody] User user)
         {
-            throw new NotImplementedException();
+            UserDataHandler userDataHandler = new UserDataHandler(config);
+            userDataHandler.password = user.password;
+            userDataHandler.userId = user.userId;
+            bool result = userDataHandler.updateUser();
+            Response response = new Response();
+            response.status = result;
+            return Json(response);
         }
     }
 }
