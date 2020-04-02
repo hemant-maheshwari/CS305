@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "okVLX/vpv3MRPDz0HVvX+w7MTZSQZlvSp17TIrpe8sz5Qj8ztSEEif7ProP/yLR6PJro7GIQGupi7s79/fx8nw==",
+  "dgSpecHash": "S0DvlFsAxCHsSLXA2wUt3sMoSaxmzpYzN7JzvmzdWnO4ixX+H+H/OG9bf3GL6eIvHvs9+tQbp09LtaZzENqBng==",
   "success": true,
-  "projectFilePath": "C:\\Xamarin\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+  "projectFilePath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\heman\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\heman\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

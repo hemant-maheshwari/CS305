@@ -7314,11 +7314,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Xamarin\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+      "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
       "projectName": "ExpenseManagerWebServiceAPI",
-      "projectPath": "C:\\Xamarin\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+      "projectPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
       "packagesPath": "C:\\Users\\heman\\.nuget\\packages\\",
-      "outputPath": "C:\\Xamarin\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\obj\\",
+      "outputPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
