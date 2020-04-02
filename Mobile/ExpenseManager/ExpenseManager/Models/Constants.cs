@@ -12,7 +12,6 @@ namespace ExpenseManager.Models
 
         public static Color backgroundColor = Color.FromRgb(112, 128, 144);
         public static Color mainTextColor = Color.FromRgb(255, 153, 0);
-        public static Color initialScreensTextColor = Color.White;
 
         public static int LoginIconHeight = 120;
     }
