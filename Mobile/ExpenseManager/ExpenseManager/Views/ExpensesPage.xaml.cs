@@ -18,12 +18,20 @@ namespace ExpenseManager.Views
             Init();
 
         }
-        void Init()
+
+        public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
             
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
 
+        void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }

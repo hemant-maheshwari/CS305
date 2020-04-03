@@ -15,19 +15,24 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        void Init()
+        public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-            lblUsername.TextColor = Constants.mainTextColor;
-            lblPassword.TextColor = Constants.mainTextColor;
+            lblUsername.TextColor = Constants.initialScreensTextColor;
+            lblPassword.TextColor = Constants.initialScreensTextColor;
             ActivitySpinner.IsVisible = false;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
 
             entryUsername.Completed += (s, e) => entryPassword.Focus();
-            entryPassword.Completed += (s, e) => SignInProcedure(s, e);
+            entryPassword.Completed += (s, e) => signInButton(s, e);
         }
 
-        void SignInProcedure(object sender, EventArgs e)
+        public void signUpButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new SignUpPage();
+        }
+
+        public void signInButton(object sender, EventArgs e)
         {
             User user = new User(entryUsername.Text, entryPassword.Text);
             if (true)
@@ -37,15 +42,30 @@ namespace ExpenseManager.Views
             }
             else
             {
-               DisplayAlert("Login", "Incorrect Login,empty username or password.", "Okay");
+                DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
             }
         }
-                 void SignUpButton(object sender, EventArgs e)
-                {
-                    App.Current.MainPage = new SignUpPage();
-                }
-            }
+
+        //public bool checkInformation()  //verifies login information
+        //{
+        //    if (username == null || password == null)
+        //    {
+        //        return false;
+        //    }
+        //    if (!this.username.Equals("") && !this.password.Equals(""))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
+
+        public void forgotPasswordButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new ForgotPasswordPage();
         }
+    }
+}
  
 
 

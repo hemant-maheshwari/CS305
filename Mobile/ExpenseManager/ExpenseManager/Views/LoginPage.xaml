@@ -22,13 +22,11 @@
                 <Label x:Name="lblUsername" Text="Username"/>
                 <Entry x:Name="entryUsername" Placeholder="Username"/>
                 <Label x:Name="lblPassword" Text="Password"/>
-                <Entry x:Name="entryPassword" Placeholder="Password"/>
-                <Button x:Name="btnSignIn" Text="Log In" Clicked="SignInProcedure"/>
-                <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="SignUpButton"/>
-                <Button x:Name="btnForgotPassword" Text="Forgot Password" Clicked="SignInProcedure" />
-                
+                <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True"/>
+                <Button x:Name="btnSignIn"  Text="Log In" Clicked="signInButton"/>
+                <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="signUpButton"/>
+                <Button x:Name="btnForgotPassword" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="DarkOrange" Text="Forgot Password? Click here" FontSize="12" Clicked="forgotPasswordButton" />
             </StackLayout>
          </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

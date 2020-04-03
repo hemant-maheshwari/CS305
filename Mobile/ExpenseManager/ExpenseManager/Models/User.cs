@@ -14,7 +14,5 @@ namespace ExpenseManager.Models
             this.username = username;
             this.password = password;
         }
-
-        
     }
 }
