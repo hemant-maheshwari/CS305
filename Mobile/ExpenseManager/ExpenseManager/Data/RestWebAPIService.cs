@@ -14,16 +14,17 @@ namespace ExpenseManager.Data
         HttpClient httpClient;
 
         public RestWebAPIService() {
-            httpClient = new HttpClient();
+            var handler = GetInsecureHandler();
+            httpClient = new HttpClient(handler);
         }
 
         public async Task createUserAsync(User user)
         {
-            string url = "https://localhost:44384/v1/api/user/create";
+            string url = "https://10.0.2.2:5001/v1/api/account/get/1";
             //var uri = new Uri(string.Format(url, string.Empty));           
             var json = JsonConvert.SerializeObject(user);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync(url, content);
+            HttpResponseMessage response = await httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine(@"\User created successfully.");
@@ -31,6 +32,18 @@ namespace ExpenseManager.Data
             else {
                 Debug.WriteLine("Error Occured!");
             }
+        }
+
+        public HttpClientHandler GetInsecureHandler()
+        {
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                if (cert.Issuer.Equals("CN=localhost"))
+                    return true;
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            };
+            return handler;
         }
 
     }
