@@ -22,14 +22,12 @@
             <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
             <Label Text="Expenses"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
         </StackLayout>
-       
         <StackLayout x:Name="WelcomeLine" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
             <Label Text="Welcome User" TextColor="Black" FontSize="25" />
             <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
         </StackLayout>
-
         <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
+        <StackLayout Padding="5">
             <Frame OutlineColor="Black" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
@@ -41,9 +39,8 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
+        </StackLayout>
+        <StackLayout Padding="5">
             <Frame OutlineColor="Black" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
@@ -55,7 +52,7 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
-        </ContentView>
+        </StackLayout>
    </StackLayout>
 </ContentPage>
 <!--End of Expenses Page-->           
@@ -75,33 +72,31 @@
         </StackLayout>
 
         <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
+        <StackLayout Padding="5">
             <Frame OutlineColor="Black" Padding="10">
                 <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
+                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60"/>
                     <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
+                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand"/>
                         <Entry x:Name="Income1">
 
                         </Entry>
                     </StackLayout>
                 </StackLayout>
             </Frame>
-        </ContentView>
+        </StackLayout>
 
-        <ContentView Padding="5">
+        <StackLayout Padding="5">
             <Frame OutlineColor="Black" Padding="10">
                 <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
+                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60"/>
                     <StackLayout>
                         <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense1">
-
-                        </Entry>
+                        <Entry x:Name="Expense1"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>
-        </ContentView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
 <!--End Of Activity Page-->
@@ -118,18 +113,40 @@
 
         <StackLayout x:Name="Welcome2" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
             <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-            <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12" />
+            <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12"/>
         </StackLayout>
         <StackLayout>
-            <Label Text="Title: " TextColor="White" FontSize="25" Margin="0,10"/>
-            <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
-            <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
-            <Label Text="Friends: " TextColor="White" FontSize="25" Margin="0,10"/>
-        </StackLayout>
-        <StackLayout>
-            <Frame>
-                <Image/>
-            </Frame>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Title: " TextColor="White" FontSize="25"/>
+                <Entry x:Name="entryTranscationTitle" Placeholder="Enter Title" TextColor="White" PlaceholderColor="LightGray" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
+                <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                  <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                      <x:String>Expense</x:String>
+                      <x:String>Income</x:String>
+                    </x:Array>
+                  </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
+                <Entry x:Name="entryTransactionAmount" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Friends: " TextColor="White" FontSize="25" Margin="0,10"/>
+            </StackLayout>
+            <StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Receipt" TextColor="White" HorizontalTextAlignment="Center" FontSize="20" Margin="0,5,0,0"/>
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <ImageButton x:Name="btnAddReceiptImageIcon" HeightRequest="40" BackgroundColor="Transparent" Source="addImageIcon.png" HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
         <StackLayout>
             <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center"/>
@@ -187,8 +204,8 @@
         <StackLayout Margin="0,30,0,0">
             <Entry x:Name="entryAccFirstName" Placeholder="First Name" TextColor="White" PlaceholderColor="LightGray"/>
             <Entry x:Name="entryAccLastName" Placeholder="Last Name" TextColor="White" PlaceholderColor="LightGray"/>
-            <Entry x:Name="entryAccEmail" Placeholder="Email" TextColor="White" PlaceholderColor="LightGray"/>
-            <Entry x:Name="entryAccPhone" Placeholder="Phone" TextColor="White" PlaceholderColor="LightGray"/>
+            <Entry x:Name="entryAccEmail" Placeholder="Email" TextColor="White" PlaceholderColor="LightGray" Keyboard="Email"/>
+            <Entry x:Name="entryAccPhone" Placeholder="Phone" TextColor="White" PlaceholderColor="LightGray" Keyboard="Telephone"/>
             <Entry x:Name="entryAccPassword" Placeholder="Password" TextColor="White" PlaceholderColor="LightGray" IsPassword="True"/>
         </StackLayout>
         <StackLayout Margin="0,40">

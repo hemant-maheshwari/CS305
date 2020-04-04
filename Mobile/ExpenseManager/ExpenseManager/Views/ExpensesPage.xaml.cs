@@ -22,6 +22,7 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
+        
             
         }
 

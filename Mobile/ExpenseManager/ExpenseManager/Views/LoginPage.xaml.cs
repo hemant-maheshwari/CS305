@@ -20,8 +20,9 @@ namespace ExpenseManager.Views
             BackgroundColor = Constants.backgroundColor;
             lblUsername.TextColor = Constants.initialScreensTextColor;
             lblPassword.TextColor = Constants.initialScreensTextColor;
-            ActivitySpinner.IsVisible = false;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
+            ActivitySpinner.IsVisible = false;
+            
 
             entryUsername.Completed += (s, e) => entryPassword.Focus();
             entryPassword.Completed += (s, e) => signInButton(s, e);
@@ -35,7 +36,7 @@ namespace ExpenseManager.Views
         public void signInButton(object sender, EventArgs e)
         {
             User user = new User(entryUsername.Text, entryPassword.Text);
-            if (true)
+            if (user != null)
             {
                 //DisplayAlert("Login", "Login Success", "Okay");
                 App.Current.MainPage = new ExpensesPage();
@@ -58,7 +59,7 @@ namespace ExpenseManager.Views
         //    }
         //    else
         //        return false;
-        //}
+        //} 
 
         public void forgotPasswordButton(object sender, EventArgs e)
         {

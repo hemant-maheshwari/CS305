@@ -21,8 +21,13 @@ namespace ExpenseManager.Views
         void Init()
         {
             BackgroundColor = Constants.backgroundColor;
+            LoginIcon.HeightRequest = Constants.LoginIconHeight;
             Spinner.IsVisible = false;
-           
+        }
+
+        public void signUpButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
         }
     }
 }
