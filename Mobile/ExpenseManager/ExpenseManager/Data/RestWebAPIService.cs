@@ -20,11 +20,11 @@ namespace ExpenseManager.Data
 
         public async Task createUserAsync(User user)
         {
-            string url = "https://10.0.2.2:5001/v1/api/account/get/1";
+            string url = "https://10.0.2.2:5001/v1/api/user/create";
             //var uri = new Uri(string.Format(url, string.Empty));           
             var json = JsonConvert.SerializeObject(user);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.GetAsync(url);
+            HttpResponseMessage response = await httpClient.PostAsync(url, content);
             if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine(@"\User created successfully.");
