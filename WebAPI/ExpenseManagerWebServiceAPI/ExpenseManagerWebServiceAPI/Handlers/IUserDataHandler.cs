@@ -8,7 +8,8 @@ namespace ExpenseManagerWebServiceAPI.Handlers
 {
     public interface IUserDataHandler
     {
-        int createUser();
+        bool createUser();
         bool updateUser();
+        User getUser(int userId);
     }
 }

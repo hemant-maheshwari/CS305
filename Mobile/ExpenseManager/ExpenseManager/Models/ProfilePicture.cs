@@ -7,7 +7,7 @@ namespace ExpenseManager.Models
         {
         }
 
-        public int profilePictureId { get; set; }//same as user id
+        public int userId { get; set; }//same as user id
         public string profilePicture { get; set; }
 
     }

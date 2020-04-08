@@ -35,16 +35,16 @@ namespace ExpenseManager.Views
 
         public void signInButton(object sender, EventArgs e)
         {
-            User user = new User(entryUsername.Text, entryPassword.Text);
-            if (user != null)
+            //User user = new User(entryUsername.Text, entryPassword.Text);
+            if (true)
             {
                 //DisplayAlert("Login", "Login Success", "Okay");
                 App.Current.MainPage = new ExpensesPage();
             }
-            else
+            /*else
             {
                 DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
-            }
+            }*/
         }
 
         //public bool checkInformation()  //verifies login information

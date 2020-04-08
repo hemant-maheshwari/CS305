@@ -29,8 +29,8 @@
                     <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryConfirmPassword" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryPhoneNumber" Placeholder= "Enter Phone Number" PlaceholderColor="LightGray" TextColor="White" Keyboard="Telephone"/>
-                    <Button x:Name="btnSignUp" Text="Sign Up"/>
-                    <Button BorderColor="Transparent" BackgroundColor="Transparent" Text="Already have account? Sign In" TextColor="DarkOrange" FontSize="12" Clicked="loginPageButton"/>
+                    <Button x:Name="btnSignUp" Text="Sign Up" Clicked="createUserAccount"/>
+                    <Button BorderColor="Transparent" BackgroundColor="Transparent" Text="Already have account? Sign In" TextColor="DarkOrange" FontSize="12" Clicked="goToLoginPage"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

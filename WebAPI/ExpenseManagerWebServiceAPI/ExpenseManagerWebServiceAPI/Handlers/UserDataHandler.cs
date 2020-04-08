@@ -12,57 +12,51 @@ namespace ExpenseManagerWebServiceAPI.Handlers
         public UserDataHandler(IConfiguration config) {
             this.config = config;
         }
-        public int createUser()
+
+        public bool createUser()
         {
-            int userId = 0;
+            return saveUser("create_user");
+        }
+
+        public User getUser(int userId)
+        {
+            User user = new User();
             string connectionString = config.GetConnectionString("DefaultConnection");
             MySqlConnection conn = new MySqlConnection(connectionString);
             MySqlCommand mySqlCommand = new MySqlCommand();
-
-            try
-            {
-                conn.Open();    //opening DB connection
+            try {
+                conn.Open();
                 mySqlCommand.Connection = conn;
 
-                mySqlCommand.CommandText = "create_user";
+                mySqlCommand.CommandText = "get_user";
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
 
-                mySqlCommand.Parameters.Add(new MySqlParameter("_username", this.username));
-                mySqlCommand.Parameters.Add(new MySqlParameter("_password", this.password));
-                mySqlCommand.Parameters.Add(new MySqlParameter("_response", 0));
-                mySqlCommand.Parameters.Add(new MySqlParameter("_user_id", 0));
-                mySqlCommand.Parameters["_response"].Direction = ParameterDirection.Output;
-                mySqlCommand.Parameters["_user_id"].Direction = ParameterDirection.Output;
+                mySqlCommand.Parameters.Add(new MySqlParameter("_user_id", userId));
 
-                mySqlCommand.ExecuteNonQuery();
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
-                var result = mySqlCommand.Parameters["_response"].Value;
-                int userIdResult = Int32.Parse(mySqlCommand.Parameters["_user_id"].Value.ToString());
-
-                //if result is 1, it means stored procedure ran successfully without any error 
-                if (Convert.ToInt32(result) == 1)
+                while (reader.Read())
                 {
-                    userId = userIdResult;
+                    user.userId = userId;
+                    user.email = reader["email"].ToString();
+                    user.firstName = reader["first_name"].ToString();
+                    user.lastName = reader["last_name"].ToString();
+                    user.phone = reader["phone"].ToString();
+                    user.username = reader["username"].ToString();
+                    user.password = reader["password"].ToString();
                 }
-            }
-            catch (Exception ex)
-            {
-                //Log exception
-                //LogHandler.LogError("UserDataHandler.createUser()", ex.Message);
+            } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                return 0;
             }
-            finally
-            {
-                conn.Close();           //closing DB connection
-                this.password = "";     //clearing from variable memory
-            }
-
-            return userId;
+            return user;
         }
 
         public bool updateUser()
         {
+            return saveUser("update_user");
+        }
+
+        private bool saveUser(string command) {
             bool response = false;
             string connectionString = config.GetConnectionString("DefaultConnection");
             MySqlConnection conn = new MySqlConnection(connectionString);
@@ -73,11 +67,16 @@ namespace ExpenseManagerWebServiceAPI.Handlers
                 conn.Open();    //opening DB connection
                 mySqlCommand.Connection = conn;
 
-                mySqlCommand.CommandText = "update_user";
+                mySqlCommand.CommandText = command;
                 mySqlCommand.CommandType = CommandType.StoredProcedure;
 
                 mySqlCommand.Parameters.Add(new MySqlParameter("_user_id", this.userId));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_username", this.username));
                 mySqlCommand.Parameters.Add(new MySqlParameter("_password", this.password));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_first_name", this.firstName));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_last_name", this.lastName));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_email", this.email));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_phone", this.phone));
                 mySqlCommand.Parameters.Add(new MySqlParameter("_response", 0));
                 mySqlCommand.Parameters["_response"].Direction = ParameterDirection.Output;
 
@@ -101,7 +100,6 @@ namespace ExpenseManagerWebServiceAPI.Handlers
             finally
             {
                 conn.Close();           //closing DB connection
-                this.password = "";     //clearing from variable memory
             }
             return response;
         }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using PocketClosetWebServiceAPI.Models;
+using System;
 
 namespace ExpenseManagerWebServiceAPI.Controllers
 {
@@ -19,14 +20,22 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         [HttpPost]
         public JsonResult createUser([FromBody] User user)
         {
-            UserDataHandler userDataHandler = new UserDataHandler(config);
-            userDataHandler.username = user.username;
-            userDataHandler.password = user.password;
-            int userId = userDataHandler.createUser();
-            user.userId = userId;
+            return saveUser(user, "create");
+        }
+
+        [Route("get/{userId}")]
+        [HttpGet]
+        public JsonResult getUser(int userId)
+        {
             Response response = new Response();
-            response.data = JsonConvert.SerializeObject(user);
-            response.status = true;
+            try {
+                UserDataHandler userDataHandler = new UserDataHandler(config);
+                User user = userDataHandler.getUser(userId);
+                response.status = true;
+                response.data = JsonConvert.SerializeObject(user);
+            } catch (Exception ex) {
+                response.message = ex.Message;
+            }
             return Json(response);
         }
 
@@ -39,10 +48,25 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         [HttpPost]
         public JsonResult updateUser([FromBody] User user)
         {
+            return saveUser(user, "update");   
+        }
+
+        private JsonResult saveUser(User user, string command) {
+            bool result = false;
             UserDataHandler userDataHandler = new UserDataHandler(config);
-            userDataHandler.password = user.password;
             userDataHandler.userId = user.userId;
-            bool result = userDataHandler.updateUser();
+            userDataHandler.username = user.username;
+            userDataHandler.password = user.password;
+            userDataHandler.firstName = user.firstName;
+            userDataHandler.lastName = user.lastName;
+            userDataHandler.email = user.email;
+            userDataHandler.phone = user.phone;
+            if (command.Equals("create")) {
+                result = userDataHandler.createUser();
+            }
+            if (command.Equals("update")) {
+                result = userDataHandler.updateUser();
+            }            
             Response response = new Response();
             response.status = result;
             return Json(response);

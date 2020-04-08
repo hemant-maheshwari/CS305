@@ -10,7 +10,7 @@ namespace ExpenseManagerWebServiceAPI.Handlers
     {
         bool createFriend();
         bool updateFriend();
-        bool deleteFriend();
+        bool deleteFriend(int userId2);
         List<Friend> getAllFriends(int userId1);
     }
 }
