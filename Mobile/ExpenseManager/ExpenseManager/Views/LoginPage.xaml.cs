@@ -47,20 +47,8 @@ namespace ExpenseManager.Views
             }*/
         }
 
-        //public bool checkInformation()  //verifies login information
-        //{
-        //    if (username == null || password == null)
-        //    {
-        //        return false;
-        //    }
-        //    if (!this.username.Equals("") && !this.password.Equals(""))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //        return false;
-        //} 
 
+                
         public void forgotPasswordButton(object sender, EventArgs e)
         {
             App.Current.MainPage = new ForgotPasswordPage();

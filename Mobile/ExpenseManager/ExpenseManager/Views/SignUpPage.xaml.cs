@@ -27,26 +27,32 @@ namespace ExpenseManager.Views
             BackgroundColor = Constants.backgroundColor;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
             Spinner.IsVisible = false;
-        }        
+        }
+
+        private async Task<bool> checkUsernameExistence(string username) {
+            return await userController.checkUsername(username);
+        }
 
         public async void createUserAccount(object sender, EventArgs e)
         {
             User user = new User(entryUsername.Text, entryPassword.Text, entryFirstName.Text, entryLastName.Text, entryEmail.Text, entryPhoneNumber.Text);
             try
             {
-                bool flag = await userController.createUser(user);
-                if (flag)
-                {
-                    await DisplayAlert("Message", "User account created successfully!", "Okay");
-                    App.Current.MainPage = new LoginPage();
+                if (!await checkUsernameExistence(user.username)) {
+                    bool flag = await userController.createUser(user);
+                    if (flag){
+                        await DisplayAlert("Message", "User account created successfully!", "Okay");
+                        App.Current.MainPage = new LoginPage();
+                    }
+                    else{
+                        await DisplayAlert("Message", "Error Occured!", "Okay");
+                    }
                 }
-                else
-                {
-                    await DisplayAlert("Message", "Error Occured!", "Okay");
+                else{
+                    await DisplayAlert("Message", "Username already exists!", "Okay");
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 await DisplayAlert("Message", "Error Occured!", "Okay");
                 Debug.WriteLine(ex.Message);
             }

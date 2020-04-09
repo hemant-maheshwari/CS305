@@ -13,6 +13,49 @@ namespace ExpenseManagerWebServiceAPI.Handlers
             this.config = config;
         }
 
+        public bool checkUsername(string username)
+        {
+            bool response = false;
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = new MySqlCommand();
+
+            try
+            {
+                conn.Open();    //opening DB connection
+                mySqlCommand.Connection = conn;
+
+                mySqlCommand.CommandText = "check_username";
+                mySqlCommand.CommandType = CommandType.StoredProcedure;
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("_username", username));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_response", 0));
+                mySqlCommand.Parameters["_response"].Direction = ParameterDirection.Output;
+
+                mySqlCommand.ExecuteNonQuery();
+
+                var result = mySqlCommand.Parameters["_response"].Value;
+
+                //if result is 1, it means stored procedure ran successfully without any error 
+                if (Convert.ToInt32(result) == 1)
+                {
+                    response = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Log exception
+                //LogHandler.LogError("UserDataHandler.createUser()", ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return response;
+            }
+            finally
+            {
+                conn.Close();           //closing DB connection
+            }
+            return response;
+        }
+
         public bool createUser()
         {
             return saveUser("create_user");

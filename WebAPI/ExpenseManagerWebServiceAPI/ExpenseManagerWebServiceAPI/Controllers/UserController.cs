@@ -16,6 +16,18 @@ namespace ExpenseManagerWebServiceAPI.Controllers
             this.config = config;
         }
 
+        [Route("check/{username}")]
+        [HttpGet]
+        public JsonResult checkUsername(string username)
+        {
+            bool result = false;
+            UserDataHandler userDataHandler = new UserDataHandler(config);
+            result = userDataHandler.checkUsername(username);
+            Response response = new Response();
+            response.status = result;
+            return Json(response);
+        }
+
         [Route("create")]
         [HttpPost]
         public JsonResult createUser([FromBody] User user)
