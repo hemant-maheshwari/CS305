@@ -61,9 +61,40 @@ namespace ExpenseManagerWebServiceAPI.Handlers
             return saveUser("create_user");
         }
 
+        public User findUser()
+        {
+            User user = null;
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            try
+            {
+                conn.Open();
+                mySqlCommand.Connection = conn;
+
+                mySqlCommand.CommandText = "find_user";
+                mySqlCommand.CommandType = CommandType.StoredProcedure;
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("_username", this.username));
+                mySqlCommand.Parameters.Add(new MySqlParameter("_password", this.password));
+
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    user = getUserFromReader(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return user;
+        }
+
         public User getUser(int userId)
         {
-            User user = new User();
+            User user = null;
             string connectionString = config.GetConnectionString("DefaultConnection");
             MySqlConnection conn = new MySqlConnection(connectionString);
             MySqlCommand mySqlCommand = new MySqlCommand();
@@ -80,15 +111,39 @@ namespace ExpenseManagerWebServiceAPI.Handlers
 
                 while (reader.Read())
                 {
-                    user.userId = userId;
-                    user.email = reader["email"].ToString();
-                    user.firstName = reader["first_name"].ToString();
-                    user.lastName = reader["last_name"].ToString();
-                    user.phone = reader["phone"].ToString();
-                    user.username = reader["username"].ToString();
-                    user.password = reader["password"].ToString();
+                    user = getUserFromReader(reader);
                 }
             } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return user;
+        }
+
+        public User validateUser(string username)
+        {
+            User user = null;
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            try
+            {
+                conn.Open();
+                mySqlCommand.Connection = conn;
+
+                mySqlCommand.CommandText = "get_user_username";
+                mySqlCommand.CommandType = CommandType.StoredProcedure;
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("_username", username));
+
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    user = getUserFromReader(reader);
+                }
+            }
+            catch (Exception ex)
+            {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
             return user;
@@ -135,8 +190,6 @@ namespace ExpenseManagerWebServiceAPI.Handlers
             }
             catch (Exception ex)
             {
-                //Log exception
-                //LogHandler.LogError("UserDataHandler.createUser()", ex.Message);
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return response;
             }
@@ -146,5 +199,18 @@ namespace ExpenseManagerWebServiceAPI.Handlers
             }
             return response;
         }
+
+        private User getUserFromReader(MySqlDataReader reader) {
+            User user = new User();
+            user.userId = Int32.Parse(reader["user_id"].ToString());
+            user.email = reader["email"].ToString();
+            user.firstName = reader["first_name"].ToString();
+            user.lastName = reader["last_name"].ToString();
+            user.phone = reader["phone"].ToString();
+            user.username = reader["username"].ToString();
+            user.password = reader["password"].ToString();
+            return user;
+        }
+
     }
 }

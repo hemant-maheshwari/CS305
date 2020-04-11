@@ -13,6 +13,8 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         JsonResult updateUser(User user);
         JsonResult getUser(int userId);
         JsonResult checkUsername(string username);
+        JsonResult login(User user);
+        JsonResult validateUsername(string username);
 
     }
 }
