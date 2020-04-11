@@ -16,16 +16,19 @@
                         <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
                     </OnIdiom>
                 </StackLayout.Padding>
-
-                <ActivityIndicator x:Name="ActivitySpinner" Color="DarkOrange" IsRunning="False"/>
-
-                <Label x:Name="lblUsername" Text="Username"/>
-                <Entry x:Name="entryUsername" Placeholder="Username"/>
-                <Label x:Name="lblPassword" Text="Password"/>
-                <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True"/>
-                <Button x:Name="btnSignIn"  Text="Log In" Clicked="signInButton"/>
-                <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="signUpButton"/>
-                <Button x:Name="btnForgotPassword" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="DarkOrange" Text="Forgot Password? Click here" FontSize="12" Clicked="forgotPasswordButton" />
+                <StackLayout x:Name="activitySpinnerLayout" IsEnabled="False" IsVisible="False">
+                    <ActivityIndicator x:Name="loginPageSpinner" Color="DarkOrange" IsRunning="False" IsVisible="False" IsEnabled="False"/>
+                    <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+                </StackLayout>
+                <StackLayout x:Name="signInLayout" IsEnabled="True" IsVisible="True">
+                    <Label x:Name="lblUsername" Text="Username"/>
+                    <Entry x:Name="entryUsername" Placeholder="Username"/>
+                    <Label x:Name="lblPassword" Text="Password"/>
+                    <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True"/>
+                    <Button x:Name="btnSignIn"  Text="Log In" Clicked="signIn"/>
+                    <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="goToSignUpPage"/>
+                    <Button x:Name="btnForgotPassword" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="DarkOrange" Text="Forgot Password? Click here" FontSize="12" Clicked="goToForgotPasswordPage" />
+                </StackLayout>
             </StackLayout>
          </StackLayout>
     </ContentPage.Content>

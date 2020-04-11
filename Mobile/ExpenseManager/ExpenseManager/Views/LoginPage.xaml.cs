@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using ExpenseManager.Controller;
 using ExpenseManager.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +11,7 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private UserController userController;
         public LoginPage()
         {
             InitializeComponent();
@@ -21,35 +24,66 @@ namespace ExpenseManager.Views
             lblUsername.TextColor = Constants.initialScreensTextColor;
             lblPassword.TextColor = Constants.initialScreensTextColor;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
-            ActivitySpinner.IsVisible = false;
             
 
-            entryUsername.Completed += (s, e) => entryPassword.Focus();
-            entryPassword.Completed += (s, e) => signInButton(s, e);
+            entryUsername.Completed += (sender, e) => entryPassword.Focus();
+            entryPassword.Completed += (sender, e) => signIn(sender, e);
         }
 
-        public void signUpButton(object sender, EventArgs e)
+        public void goToSignUpPage(object sender, EventArgs e)
         {
             App.Current.MainPage = new SignUpPage();
         }
 
-        public void signInButton(object sender, EventArgs e)
+        public async void signIn(object sender, EventArgs e)
         {
-            //User user = new User(entryUsername.Text, entryPassword.Text);
-            if (true)
+            isActivitySpinnerShowing(true);
+            User user = new User(entryUsername.Text, entryPassword.Text);
+            user = await checkUserExistence(user);
+            if (user.userId != 0)
             {
                 //DisplayAlert("Login", "Login Success", "Okay");
-                App.Current.MainPage = new ExpensesPage();
+                App.Current.MainPage = new ExpensesPage();              //PASS USER AS PARAMETER!!!!!!!!!!!!!!!!!
             }
-            /*else
+            else
             {
-                DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
-            }*/
+                isActivitySpinnerShowing(false);
+                await DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
+            }
+        }
+
+        private async Task<User> checkUserExistence(User user)
+        {
+            return await userController.checkUser(user);
+        }
+
+        private void isActivitySpinnerShowing(bool status)
+        {
+            if (status.Equals(true))
+            {
+                signInLayout.IsVisible = false;
+                signInLayout.IsEnabled = false;
+                activitySpinnerLayout.IsVisible = true;
+                loginPageSpinner.IsVisible = true;
+                loginPageSpinner.IsRunning = true;
+                loginPageSpinner.IsEnabled = true;
+
+            }
+            if (status.Equals(false))
+            {
+                activitySpinnerLayout.IsVisible = false;
+                signInLayout.IsVisible = true;
+                signInLayout.IsEnabled = true;
+                loginPageSpinner.IsVisible = false;
+                loginPageSpinner.IsRunning = false;
+                loginPageSpinner.IsEnabled = false;
+
+            }
         }
 
 
                 
-        public void forgotPasswordButton(object sender, EventArgs e)
+        public void goToForgotPasswordPage(object sender, EventArgs e)
         {
             App.Current.MainPage = new ForgotPasswordPage();
         }

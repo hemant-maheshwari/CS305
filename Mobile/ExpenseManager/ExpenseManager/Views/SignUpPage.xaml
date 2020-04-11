@@ -20,8 +20,11 @@
                         <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
                     </OnIdiom>
                 </StackLayout.Padding>
-                <ActivityIndicator x:Name="Spinner" Color="DarkOrange" IsRunning="False"/>
-                <StackLayout>
+                <StackLayout x:Name="activitySpinnerLayout" IsVisible="False" IsEnabled="False">
+                    <ActivityIndicator x:Name="signUpLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+                    <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+                </StackLayout>
+                <StackLayout x:Name="signUpLayout" IsVisible="True" IsEnabled="True">
                     <Entry x:Name="entryFirstName" Placeholder="First Name" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryLastName" Placeholder="Last Name" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryEmail" Placeholder="Email" PlaceholderColor="LightGray" TextColor="White" Keyboard="Email"/>
@@ -29,7 +32,7 @@
                     <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryConfirmPassword" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
                     <Entry x:Name="entryPhoneNumber" Placeholder= "Enter Phone Number" PlaceholderColor="LightGray" TextColor="White" Keyboard="Telephone"/>
-                    <Button x:Name="btnSignUp" Text="Sign Up" Clicked="createUserAccount"/>
+                    <Button x:Name="btnSignUp" Text="Sign Up" Clicked="verifyUserForm"/>
                     <Button BorderColor="Transparent" BackgroundColor="Transparent" Text="Already have account? Sign In" TextColor="DarkOrange" FontSize="12" Clicked="goToLoginPage"/>
                 </StackLayout>
             </StackLayout>
