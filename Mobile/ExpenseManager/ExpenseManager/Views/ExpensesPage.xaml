@@ -1,23 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="ExpenseManager.Views.ExpensesPage"
-    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-    android:TabbedPage.ToolbarPlacement="Bottom" BarBackgroundColor="WhiteSmoke">
-
-<StackLayout.Padding>
-    <OnIdiom x:TypeArguments="Thickness" >
-        <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
-        <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
-    </OnIdiom>
-</StackLayout.Padding>
-
-<!--Start of Expense Class-->
-<ContentPage Title="Expenses" IconImageSource="expenseIcon.png">
-   <StackLayout>
+             x:Name="expensesPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    
+    <ContentPage.Content>
+    <StackLayout>
+        <StackLayout.Padding>
+            <OnIdiom x:TypeArguments="Thickness" >
+                <OnIdiom.Phone>40,40,40,0</OnIdiom.Phone>
+                <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+            </OnIdiom>
+        </StackLayout.Padding>
+        <StackLayout x:Name="activitySpinnerExpensesLayout" IsVisible="False" IsEnabled="False">
+            <ActivityIndicator x:Name="updateExpensesLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+            <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+        </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
             <Label Text="Expenses"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
@@ -53,166 +56,6 @@
                 </StackLayout>
             </Frame>
         </StackLayout>
-   </StackLayout>
-</ContentPage>
-<!--End of Expenses Page-->           
-                
-                
-<!--Start of Activity Page-->
-<ContentPage Title="Activity" IconImageSource="activityIcon.png"  >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
-            <Label Text="Activity"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome1" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <StackLayout Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60"/>
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand"/>
-                        <Entry x:Name="Income1">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-
-        <StackLayout Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60"/>
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense1"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
     </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
-<!--End Of Activity Page-->
-
-                
-                
-<!--Start of Transactions Page-->
-<ContentPage Title="Transactions" IconImageSource="transactionIcon.png">
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"/>
-            <Label x:Name="lblTransactionsHeader" Text="Transactions"  Margin="30,0,0,0" FontAttributes="Bold" FontSize="35" TextColor="White" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome2" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-            <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12"/>
-        </StackLayout>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Title: " TextColor="White" FontSize="25"/>
-                <Entry x:Name="entryTranscationTitle" Placeholder="Enter Title" TextColor="White" PlaceholderColor="LightGray" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
-                <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                  <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                      <x:String>Expense</x:String>
-                      <x:String>Income</x:String>
-                    </x:Array>
-                  </Picker.ItemsSource>
-                </Picker>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
-                <Entry x:Name="entryTransactionAmount" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Friends: " TextColor="White" FontSize="25" Margin="0,10"/>
-            </StackLayout>
-            <StackLayout>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Receipt" TextColor="White" HorizontalTextAlignment="Center" FontSize="20" Margin="0,5,0,0"/>
-                <StackLayout VerticalOptions="FillAndExpand">
-                    <ImageButton x:Name="btnAddReceiptImageIcon" HeightRequest="40" BackgroundColor="Transparent" Source="addImageIcon.png" HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
-        <StackLayout>
-            <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center"/>
-        </StackLayout>
-    </StackLayout>
-</ContentPage>
-<!--End of Transaction Page-->
-
-
-                
-<!--Start of Friends Page-->
-<ContentPage Title="Friends" IconImageSource="friendIcon.png" >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image x:Name="imgLoginIcon" Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="Friends"  Margin="30,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="White" FontFamily="MS Gothic"  />
-        </StackLayout>
-        <StackLayout x:Name="Welcome3" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <!--<Label x:Name="lblFriendsHeading" Text="Friends" TextColor="WhiteSmoke" FontSize="25" />-->
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-        <StackLayout Orientation="Vertical" x:Name="FriendsStackLayout" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
-            <ListView x:Name="friendListView"  ItemsSource="{Binding Items}"  HasUnevenRows="True"> <!--VerticalOptions="FillAndExpand" -->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell IsEnabled="False">
-                            <StackLayout Padding="1">
-                                <Label x:Name="lblFriendName" Text="{Binding Name}" LineBreakMode="NoWrap" TextColor="White" FontSize="15"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <StackLayout Margin="0,0,0,65">
-                <Label x:Name="lblTotalAmount" Text="Total Amount:" TextColor="White" FontSize="20"/>
-                <Button x:Name="btnInviteFriends" HorizontalOptions="Center" Text="Invite Friends" BackgroundColor="DarkOrange" CornerRadius="5" TextColor="White" Margin="0,20,0,0"/>
-            </StackLayout>
-        </StackLayout>
-    </StackLayout>
-</ContentPage>
-<!--End Of Friends Page-->
-
-                
-<!--Start of Account Page-->
-<ContentPage Title="Account" IconImageSource="accountIcon.png"  >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="Account"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="40" TextColor="White" FontFamily="MS Gothic"/>
-        </StackLayout>
-        <StackLayout x:Name="Welcome4" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-            <Label Text="Edit your account information" TextColor="White" FontSize="15" />
-        </StackLayout>
-        <StackLayout Margin="0,30,0,0">
-            <Entry x:Name="entryAccFirstName" Placeholder="First Name" TextColor="White" PlaceholderColor="LightGray"/>
-            <Entry x:Name="entryAccLastName" Placeholder="Last Name" TextColor="White" PlaceholderColor="LightGray"/>
-            <Entry x:Name="entryAccEmail" Placeholder="Email" TextColor="White" PlaceholderColor="LightGray" Keyboard="Email"/>
-            <Entry x:Name="entryAccPhone" Placeholder="Phone" TextColor="White" PlaceholderColor="LightGray" Keyboard="Telephone"/>
-            <Entry x:Name="entryAccPassword" Placeholder="Password" TextColor="White" PlaceholderColor="LightGray" IsPassword="True"/>
-        </StackLayout>
-        <StackLayout Margin="0,40">
-            <Button x:Name="btnUpdateAccInfo" CornerRadius="5" BackgroundColor="DarkOrange" Text="Update Information" TextColor="White" HorizontalOptions="Center"/>
-        </StackLayout>
-    </StackLayout>
-</ContentPage>
-<!--End Of Account Page-->
-    
-</TabbedPage>

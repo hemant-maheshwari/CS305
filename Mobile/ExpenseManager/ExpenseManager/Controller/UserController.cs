@@ -37,6 +37,7 @@ namespace ExpenseManager.Controller
         {
             return await restAPIService.getUserFromUsernameAsync(username);
         }
+     
 
         //public async Task<User> getUser(int userId);
     }

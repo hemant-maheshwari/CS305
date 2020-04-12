@@ -51,6 +51,11 @@ namespace ExpenseManager.Views
                 await DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
             }
         }
+        public void goToMainPage(object sender, EventArgs e)
+        {
+            
+            Application.Current.MainPage = new NavPage();
+        }
 
         private async Task<User> checkUserExistence(User user)
         {

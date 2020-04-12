@@ -90,7 +90,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void isActivitySpinnerShowing(bool status)
+        public void isActivitySpinnerShowing(bool status)
         {
             if (status.Equals(true))
             {

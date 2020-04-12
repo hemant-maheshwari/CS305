@@ -41,6 +41,11 @@ namespace ExpenseManager.Views
             } 
         }
 
+        public void goToLoginPage(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
+
         private async Task<User> getUserFromUsername(string username)
         {
             return await userController.getUserFromUsername(username);
