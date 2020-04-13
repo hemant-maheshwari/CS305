@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ExpenseManager.Models;
 using Xamarin.Forms;
 using ExpenseManager.Controller;
+using System.Diagnostics;
 
 namespace ExpenseManager.Views
 {
@@ -21,29 +22,34 @@ namespace ExpenseManager.Views
         {
             BackgroundColor = Constants.backgroundColor;
             userController = new UserController();
+            user = new User();
         }
 
         public async void verifyExistingUsername(object sender, EventArgs e)
         {
             isForgotPasswordLayoutShowing(false);
             isActivitySpinnerShowing(true);
-            user = await getUserFromUsername(entryUsername.Text);
-            if(user.userId != 0)
+            try
+            {
+                User completeUser = await getUserFromUsername(entryUsername.Text);
+                if (completeUser.userId != 0)
+                {
+                    isActivitySpinnerShowing(false);
+                    isUpdatePasswordLayoutShowing(true);
+                    user = completeUser;
+                }
+                else
+                {
+                    isActivitySpinnerShowing(false);
+                    isForgotPasswordLayoutShowing(true);
+                    await DisplayAlert("Invalid Username", "There is no account associated with this username.", "Okay");
+                }
+            }catch(Exception ex)
             {
                 isActivitySpinnerShowing(false);
-                isUpdatePasswordLayoutShowing(true);
+                await DisplayAlert("Error", "Error occurred.", "Okay");
+                Debug.WriteLine(ex.Message);
             }
-            else
-            {
-                isActivitySpinnerShowing(false);
-                isForgotPasswordLayoutShowing(true);
-                await DisplayAlert("Invalid Username", "There is no account associated with this username.", "Okay");
-            } 
-        }
-
-        public void goToLoginPage(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new LoginPage();
         }
 
         private async Task<User> getUserFromUsername(string username)
@@ -70,17 +76,26 @@ namespace ExpenseManager.Views
         private async void updatePassword(string password)
         {
             user.password = password;
-            if (await userController.updateModel(user))
+            try
             {
-                await DisplayAlert("Update Success", "Password updated successfully", "Okay");
-                App.Current.MainPage = new LoginPage();
+                if (await userController.updateModel(user))
+                {
+                    await DisplayAlert("Update Success", "Password updated successfully", "Okay");
+                    App.Current.MainPage = new LoginPage();
 
-            }
-            else
+                }
+                else
+                {
+                    isActivitySpinnerShowing(false);
+                    isForgotPasswordLayoutShowing(true);
+                    await DisplayAlert("Update Unsuccessful", "Something went wrong.", "Okay");
+                }
+            }catch(Exception ex)
             {
                 isActivitySpinnerShowing(false);
                 isForgotPasswordLayoutShowing(true);
-                await DisplayAlert("Update Unsuccessful", "Something went wrong.", "Okay");
+                await DisplayAlert("Error", "Error occurred", "Okay");
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -137,6 +152,11 @@ namespace ExpenseManager.Views
                 updatePasswordLayout.IsVisible = false;
                 updatePasswordLayout.IsEnabled = false;
             }
+        }
+
+        private void goToLoginPage(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ExpenseManager.Models;
+using ExpenseManagerWebServiceAPI.ViewModels;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
@@ -22,6 +23,48 @@ namespace ExpenseManagerWebServiceAPI.Handlers
         public bool deleteFriend(int userId2)
         {
             throw new NotImplementedException();
+        }
+
+        public List<FriendInfo> getAllFriendInfo(int userId1)
+        {
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            List<FriendInfo> friendInfos = new List<FriendInfo>();
+            try
+            {
+                conn.Open();    //opening DB connection
+                mySqlCommand.Connection = conn;
+
+                mySqlCommand.CommandText = "get_all_friend_infos";  //CREATE STORE PROCEDURE
+                mySqlCommand.CommandType = CommandType.StoredProcedure;
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("_user_id1", userId1));
+
+                //mySqlCommand.ExecuteNonQuery();
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    FriendInfo friendInfo = new FriendInfo();
+                    friendInfo.friendId = Int32.Parse(reader["user_id"].ToString());
+                    friendInfo.firstName = reader["first_name"].ToString();
+                    friendInfo.lastName = reader["last_name"].ToString();
+
+
+                    friendInfos.Add(friendInfo); //adding to Vendor List
+                }
+            }
+            catch (Exception ex)
+            {
+                //Log exception
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();           //closing DB connection
+            }
+            return friendInfos;
         }
 
         public List<Friend> getAllFriends(int userId1)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ExpenseManager.Models;
 using ExpenseManagerWebServiceAPI.Handlers;
+using ExpenseManagerWebServiceAPI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -37,6 +38,26 @@ namespace ExpenseManagerWebServiceAPI.Controllers
             } catch(Exception ex) {
                 response.message = ex.Message;
                 response.status = false;                
+            }
+            return Json(response);
+        }
+
+        [Route("getAllFriendInfo/{userId1}")]
+        [HttpGet]
+        public JsonResult getAllFriendInfo(int userId1)
+        {
+            Response response = new Response();
+            try
+            {
+                FriendDataHandler friendDataHandler = new FriendDataHandler(config);
+                List<FriendInfo> friends = friendDataHandler.getAllFriendInfo(userId1);
+                response.status = true;
+                response.data = JsonConvert.SerializeObject(friends);
+            }
+            catch (Exception ex)
+            {
+                response.message = ex.Message;
+                response.status = false;
             }
             return Json(response);
         }

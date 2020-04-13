@@ -13,5 +13,6 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         JsonResult updateFriend(Friend friend);
         JsonResult deleteFriend(int userId2);
         JsonResult getAllFriends(int userId1);
+        JsonResult getAllFriendInfo(int userId1);
     }
 }

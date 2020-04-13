@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using ExpenseManager.Controller;
 using ExpenseManager.Models;
@@ -24,10 +25,7 @@ namespace ExpenseManager.Views
             lblUsername.TextColor = Constants.initialScreensTextColor;
             lblPassword.TextColor = Constants.initialScreensTextColor;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
-            
-
-            entryUsername.Completed += (sender, e) => entryPassword.Focus();
-            entryPassword.Completed += (sender, e) => signIn(sender, e);
+            userController = new UserController();
         }
 
         public void goToSignUpPage(object sender, EventArgs e)
@@ -35,26 +33,48 @@ namespace ExpenseManager.Views
             App.Current.MainPage = new SignUpPage();
         }
 
-        public async void signIn(object sender, EventArgs e)
+        public void verifyLoginForm(object sender, EventArgs e)
         {
-            isActivitySpinnerShowing(true);
-            User user = new User(entryUsername.Text, entryPassword.Text);
-            user = await checkUserExistence(user);
-            if (user.userId != 0)
+            if (entryUsername.Text == " " || entryUsername.Text == null)
             {
-                //DisplayAlert("Login", "Login Success", "Okay");
-                App.Current.MainPage = new ExpensesPage();              //PASS USER AS PARAMETER!!!!!!!!!!!!!!!!!
+                DisplayAlert("Invalid username", "Please enter a username", "Okay");
+                entryUsername.Focus();
+            }
+            else if (entryPassword.Text == " " || entryPassword.Text == null)
+            {
+                DisplayAlert("Invalid password", "Please enter a password.", "Okay");
+                entryPassword.Focus();
             }
             else
             {
-                isActivitySpinnerShowing(false);
-                await DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
+                isActivitySpinnerShowing(true);
+                signIn();
             }
         }
-        public void goToMainPage(object sender, EventArgs e)
+
+        private async void signIn()
         {
-            
-            Application.Current.MainPage = new NavPage();
+            User user = new User(entryUsername.Text, entryPassword.Text);
+            try { 
+                user = await checkUserExistence(user);
+                if (user.userId != 0)
+                {
+                    //DisplayAlert("Login", "Login Success", "Okay");
+                    App.Current.MainPage = new NavPage(user);          //PASS USER AS PARAMETER!!!!!!!!!!!!!!!!!
+                }
+                else
+                {
+                    isActivitySpinnerShowing(false);
+                    await DisplayAlert("Login Failed", "Incorrect Username or Password", "Try Again");
+                }
+            }catch(Exception e)
+            {
+                isActivitySpinnerShowing(false);
+                entryUsername.Text = "";
+                entryPassword.Text = "";
+                await DisplayAlert("Message", "Error Occured!", "Okay");
+                Debug.WriteLine(e.Message);
+            }
         }
 
         private async Task<User> checkUserExistence(User user)
@@ -86,14 +106,12 @@ namespace ExpenseManager.Views
             }
         }
 
-
-                
         public void goToForgotPasswordPage(object sender, EventArgs e)
         {
             App.Current.MainPage = new ForgotPasswordPage();
         }
     }
 }
- 
+
 
 

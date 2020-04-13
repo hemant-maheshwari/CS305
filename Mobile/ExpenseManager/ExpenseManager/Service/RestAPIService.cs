@@ -1,7 +1,10 @@
 ﻿using ExpenseManager.Models;
 using ExpenseManager.Util;
+using ExpenseManager.ViewModels;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +64,7 @@ namespace ExpenseManager.Service
 
         public async Task<User> getUserFromUsernameAsync(string username)
         {
-            string url = WEB_API_BASE_URL + "/user/validateUsername/" + username;
+            string url = WEB_API_BASE_URL + "user/validateUsername/" + username;
             HttpResponseMessage response = await httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
@@ -73,6 +76,30 @@ namespace ExpenseManager.Service
                 Debug.WriteLine("Error Occured!");
                 return default(User);
             }
+        }
+
+        public async Task<List<FriendInfo>> getAllFriendsInfoAsync(int userId)
+        {
+            string url = WEB_API_BASE_URL + "friend/getAllFriendInfo/" + userId;
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                Response responseObject = await getHTTPResponse(response);
+                return getListFriendsInfoFromResponse(responseObject);
+            }
+            else
+            {
+                Debug.WriteLine("Error Occured!");
+                return default(List<FriendInfo>);
+            }
+        }
+
+        private List<FriendInfo> getListFriendsInfoFromResponse(Response response)
+        {
+            string stringFriendList = response.data;
+            FriendInfo[] friendInfoArray = JsonConvert.DeserializeObject<FriendInfo[]>(stringFriendList);
+            return friendInfoArray.ToList<FriendInfo>();
+
         }
 
     }

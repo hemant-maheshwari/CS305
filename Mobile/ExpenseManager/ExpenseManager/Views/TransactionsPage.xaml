@@ -53,10 +53,15 @@
                     <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
                     <Entry x:Name="entryTransactionAmount" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Friends: " TextColor="White" FontSize="25" Margin="0,10"/>
+                <StackLayout x:Name="addedFriendsLayout">
+                    <Label Text="Friends: " TextColor="White" FontSize="25" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
+                    <Label x:Name="lblFriendsList" Text="" TextColor="White" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    <StackLayout>
+                        <Button x:Name="btnAddFriend" BackgroundColor="DarkOrange" Text="Add Friend" TextColor="White" HorizontalOptions="Center" Clicked="showFriendsList" FontSize="15" HeightRequest="40"/>
+                    </StackLayout> 
                 </StackLayout>
-                <StackLayout>
+                <StackLayout x:Name="friendsPickerLayout" IsVisible="False" IsEnabled="False">
+                    <Picker x:Name="friendsPicker" IsVisible="False" IsEnabled="False" Title="Select a friend to add" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Receipt" TextColor="White" HorizontalTextAlignment="Center" FontSize="20" Margin="0,5,0,0"/>
@@ -66,7 +71,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center"/>
+                <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center" HeightRequest="40"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

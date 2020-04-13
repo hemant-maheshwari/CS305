@@ -10,20 +10,21 @@ using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
 using ExpenseManager.Controller;
 using System.Diagnostics;
+using ExpenseManager.Util;
 
 namespace ExpenseManager.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpensesPage : ContentPage
     {
-       
 
+        private User user;
         public ExpensesPage()
         {
             InitializeComponent();
             Init();
-           
-        }
+            this.user = CommonSettings.user;
+        }  
 
         public void Init()
         {
@@ -35,16 +36,8 @@ namespace ExpenseManager.Views
         {
             base.OnAppearing();
         }
-
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
-        }
-  
-        }
-   
-
-     
     }
+}
 
     
         

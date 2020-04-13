@@ -1,5 +1,6 @@
 ﻿using ExpenseManager.Controller;
 using ExpenseManager.Models;
+using ExpenseManager.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,12 +22,8 @@ namespace ExpenseManager.Views
         public AccountPage()
         {
             InitializeComponent();
-        }
-        public AccountPage(User user)
-        {
-            InitializeComponent();
             Init();
-            this.user = user;
+            this.user = CommonSettings.user;
             updateAccountLoader.IsVisible = false;
         }
         public void Init()
@@ -38,9 +35,6 @@ namespace ExpenseManager.Views
             base.OnAppearing();
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
-        }
         public void updateUserForm(object sender, EventArgs e)
         {
             if (entryAccFirstName.Text == " " || entryAccFirstName.Text == null)

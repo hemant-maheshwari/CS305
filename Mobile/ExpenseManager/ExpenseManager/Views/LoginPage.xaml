@@ -25,7 +25,7 @@
                     <Entry x:Name="entryUsername" Placeholder="Username"/>
                     <Label x:Name="lblPassword" Text="Password"/>
                     <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True"/>
-                    <Button x:Name="btnSignIn"  Text="Log In" Clicked="goToMainPage"/>
+                    <Button x:Name="btnSignIn"  Text="Log In" Clicked="verifyLoginForm"/>
                     <Button x:Name="btnSignUp"  Text="Sign Up" Clicked="goToSignUpPage"/>
                     <Button x:Name="btnForgotPassword" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="DarkOrange" Text="Forgot Password? Click here" FontSize="12" Clicked="goToForgotPasswordPage" />
                 </StackLayout>

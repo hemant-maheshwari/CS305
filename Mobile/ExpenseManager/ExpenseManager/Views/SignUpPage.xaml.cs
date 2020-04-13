@@ -85,12 +85,12 @@ namespace ExpenseManager.Views
             else
             {
                 isActivitySpinnerShowing(true);
-                createUserAccount(sender, e);
-               
+                createUserAccount();
+
             }
         }
 
-        public void isActivitySpinnerShowing(bool status)
+        private void isActivitySpinnerShowing(bool status)
         {
             if (status.Equals(true))
             {
@@ -100,7 +100,7 @@ namespace ExpenseManager.Views
                 signUpLoader.IsVisible = true;
                 signUpLoader.IsRunning = true;
                 signUpLoader.IsEnabled = true;
-               
+
             }
             if (status.Equals(false))
             {
@@ -110,17 +110,18 @@ namespace ExpenseManager.Views
                 signUpLoader.IsVisible = false;
                 signUpLoader.IsRunning = false;
                 signUpLoader.IsEnabled = false;
-                
+
             }
         }
-        
 
-        private async Task<bool> checkUsernameExistence(string username) {
+
+        private async Task<bool> checkUsernameExistence(string username)
+        {
             return await userController.checkUsername(username);
         }
 
-        public async void createUserAccount(object sender, EventArgs e)
-        {       
+        private async void createUserAccount()
+        {
             User user = new User(entryUsername.Text, entryPassword.Text, entryFirstName.Text, entryLastName.Text, entryEmail.Text, entryPhoneNumber.Text);
             try
             {
