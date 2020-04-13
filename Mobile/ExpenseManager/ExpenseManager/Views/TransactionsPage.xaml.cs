@@ -25,7 +25,7 @@ namespace ExpenseManager.Views
         {
             this.user = CommonSettings.user;
             InitializeComponent();
-            Init();
+            //Init();
         }
 
         public async void Init()
