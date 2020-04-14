@@ -23,7 +23,6 @@ namespace ExpenseManager.Views
         {
             InitializeComponent();
             Init();
-            this.user = CommonSettings.user;
             updateAccountLoader.IsVisible = false;
         }
         public void Init()
@@ -33,6 +32,7 @@ namespace ExpenseManager.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            BindingContext = this.user = Application.Current.Properties[CommonSettings.USER_SETTING] as User;
         }
 
         public void updateUserForm(object sender, EventArgs e)

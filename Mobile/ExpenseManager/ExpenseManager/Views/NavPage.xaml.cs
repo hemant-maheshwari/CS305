@@ -19,7 +19,7 @@ namespace ExpenseManager.Views
         {
             InitializeComponent();
             Init();
-            this.user = user;
+            Application.Current.Properties[CommonSettings.USER_SETTING] = user;
         }
 
         public NavPage()

@@ -29,7 +29,7 @@
                 <Label Text="Edit your account information" TextColor="White" FontSize="15" />
             </StackLayout>
             <StackLayout x:Name="updateLayout" IsVisible="True" IsEnabled="False" Margin="0,30,0,0" >
-                <Entry x:Name="entryAccFirstName" Placeholder="First Name" TextColor="White" PlaceholderColor="LightGray"/>
+                <Entry x:Name="entryAccFirstName" Placeholder="First Name" TextColor="White" PlaceholderColor="LightGray" Text="{Binding firstName}"/>
                 <Entry x:Name="entryAccLastName" Placeholder="Last Name" TextColor="White" PlaceholderColor="LightGray"/>
                 <Entry x:Name="entryAccEmail" Placeholder="Email" TextColor="White" PlaceholderColor="LightGray" Keyboard="Email"/>
                 <Entry x:Name="entryAccPhone" Placeholder="Phone" TextColor="White" PlaceholderColor="LightGray" Keyboard="Telephone"/>
