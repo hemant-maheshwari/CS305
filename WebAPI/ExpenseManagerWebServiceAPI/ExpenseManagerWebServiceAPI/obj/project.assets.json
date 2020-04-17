@@ -7313,11 +7313,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adriangallant/ExpenseManager-AARON/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
+      "projectUniqueName": "/Users/adriangallant/ExpenseManager-RECENT/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
       "projectName": "ExpenseManagerWebServiceAPI",
-      "projectPath": "/Users/adriangallant/ExpenseManager-AARON/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
+      "projectPath": "/Users/adriangallant/ExpenseManager-RECENT/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
       "packagesPath": "/Users/adriangallant/.nuget/packages/",
-      "outputPath": "/Users/adriangallant/ExpenseManager-AARON/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/obj/",
+      "outputPath": "/Users/adriangallant/ExpenseManager-RECENT/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/adriangallant/.config/NuGet/NuGet.Config"

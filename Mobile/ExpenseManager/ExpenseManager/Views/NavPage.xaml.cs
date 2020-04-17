@@ -17,9 +17,9 @@ namespace ExpenseManager.Views
         User user;
         public NavPage(User user)
         {
+            Application.Current.Properties[CommonSettings.USER_SETTING] = user;
             InitializeComponent();
             Init();
-            Application.Current.Properties[CommonSettings.USER_SETTING] = user;
         }
 
         public NavPage()
@@ -31,7 +31,7 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-            CommonSettings.user = user;
+            //CommonSettings.user = user;
 
         }
 

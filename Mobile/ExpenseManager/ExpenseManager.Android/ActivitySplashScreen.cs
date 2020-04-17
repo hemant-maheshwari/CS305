@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ExpenseManager.Droid
 {
-    [Activity(MainLauncher = true, NoHistory =true, Label ="")]
+    [Activity(MainLauncher = true, NoHistory =true, Label ="ExpenseManager")]
     public class ActivitySplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

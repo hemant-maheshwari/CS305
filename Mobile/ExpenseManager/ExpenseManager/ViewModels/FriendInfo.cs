@@ -10,5 +10,10 @@ namespace ExpenseManager.ViewModels
         public FriendInfo()
         {
         }
+
+        public string toString()
+        {
+            return firstName + " " + lastName;
+        }
     }
 }

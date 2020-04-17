@@ -15,6 +15,14 @@ namespace ExpenseManager.ViewModels
             transaction = new Transaction();
         }
 
+        public List<string> friendsListToString() {
+            List<string> friendListString = new List<string>();
+            for (int i =0; i < friendsList.Count; i++) {
+                friendListString.Add(friendsList[i].toString());
+            }
+            return friendListString;
+        }
+
 
     }
 }

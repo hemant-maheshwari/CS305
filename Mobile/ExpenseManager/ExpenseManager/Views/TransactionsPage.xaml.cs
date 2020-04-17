@@ -23,24 +23,25 @@ namespace ExpenseManager.Views
 
         public TransactionsPage()
         {
-            this.user = CommonSettings.user;
+            
             InitializeComponent();
-            //Init();
+            Init();
         }
 
-        public async void Init()
+        public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
             transactionController = new TransactionController();
             friendController = new FriendController();
             transactionsPageModel = new TransactionPageModel();
-            transactionsPageModel.friendsList = await initializeFriendsList(user.userId);
-            friendsPicker.ItemsSource = transactionsPageModel.friendsList;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            user = Application.Current.Properties[CommonSettings.USER_SETTING] as User;
+            transactionsPageModel.friendsList = await initializeFriendsList(user.userId);
+            friendsPicker.ItemsSource = transactionsPageModel.friendsListToString();
         }
 
         private void showFriendsList(object sender, EventArgs e)

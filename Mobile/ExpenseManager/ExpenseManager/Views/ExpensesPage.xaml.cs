@@ -23,7 +23,6 @@ namespace ExpenseManager.Views
         {
             InitializeComponent();
             Init();
-            this.user = CommonSettings.user;
         }  
 
         public void Init()

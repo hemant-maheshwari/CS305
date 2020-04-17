@@ -19,16 +19,19 @@ namespace ExpenseManager.Views
     {
         private UserController userController;
         private User user;
+
         public AccountPage()
         {
             InitializeComponent();
             Init();
             updateAccountLoader.IsVisible = false;
         }
+
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
