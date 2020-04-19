@@ -31,7 +31,6 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-            //CommonSettings.user = user;
 
         }
 
