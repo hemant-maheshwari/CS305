@@ -33,6 +33,7 @@ namespace ExpenseManager.Models
         {
             this.email = email;
         }
+
         public void updateUser(string firstName, string lastName, string email, string phone, string password)
         {
             this.email = email;

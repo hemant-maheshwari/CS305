@@ -71,7 +71,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center" HeightRequest="40"/>
+                <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center" HeightRequest="40" Clicked="verifyTransactionForm"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

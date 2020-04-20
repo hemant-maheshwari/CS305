@@ -24,18 +24,22 @@ namespace ExpenseManager.Views
         {
             InitializeComponent();
             Init();
-            updateAccountLoader.IsVisible = false;
         }
 
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
+            userController = new UserController();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            BindingContext = this.user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            this.user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            entryAccFirstName.Text = user.firstName;
+            entryAccLastName.Text = user.lastName;
+            entryAccEmail.Text = user.email;
+            entryAccPhone.Text = user.phone;
         }
 
         public void updateUserForm(object sender, EventArgs e)
@@ -56,28 +60,10 @@ namespace ExpenseManager.Views
                 entryAccEmail.Focus();
                 entryAccEmail.Text = "";
             }
-            else if (entryAccPassword.Text == null || entryAccPassword.Text == "")
-            {
-                DisplayAlert("Invalid Password", "Please enter a valid password.", "Okay");
-                entryAccPassword.Focus();
-            }
-            else if (entryAccConfirmPassword.Text == null || entryAccConfirmPassword.Text == "")
-            {
-                DisplayAlert("Invalid Confirmation", "Please enter your password again.", "Okay");
-                entryAccConfirmPassword.Focus();
-                entryAccConfirmPassword.Text = "";
-            }
-            else if (entryAccConfirmPassword.Text != entryAccPassword.Text)
-            {
-                DisplayAlert("Invalid Password Confirmation", "Passwords do not match. Try again.", "Okay");
-                entryAccConfirmPassword.Focus();
-                entryAccConfirmPassword.Text = "";
-            }
             else if (entryAccPhone.Text == null || entryAccPhone.Text == "")
             {
                 DisplayAlert("Invalid Phone Number", "Please enter a phone number.", "Okay");
                 entryAccPhone.Focus();
-
             }
             else if (entryAccPhone.Text.Length < 10 || entryAccPhone.Text.Length > 11)
             {
@@ -85,41 +71,47 @@ namespace ExpenseManager.Views
                 entryAccPhone.Focus();
                 entryAccPhone.Text = "";
             }
+            else if (entryAccPassword.Text != null && entryAccPassword.Text != "")
+            {
+                if (entryAccConfirmPassword.Text == null || entryAccConfirmPassword.Text == "")
+                {
+                    DisplayAlert("Invalid Confirmation", "Please enter your password again.", "Okay");
+                    entryAccConfirmPassword.Focus();
+                    entryAccConfirmPassword.Text = "";
+                }
+                else if (!passwordsMatch(entryAccPassword.Text, entryAccConfirmPassword.Text))
+                {
+                    DisplayAlert("Invalid Password Confirmation", "Passwords do not match. Try again.", "Okay");
+                    entryAccConfirmPassword.Focus();
+                    entryAccConfirmPassword.Text = "";
+                }
+                else
+                {
+                    user.firstName = entryAccFirstName.Text;
+                    user.lastName = entryAccLastName.Text;
+                    user.email = entryAccEmail.Text;
+                    user.phone = entryAccPhone.Text;
+                    user.password = entryAccPassword.Text;
+                    isActivitySpinnerShowing(true);
+                    updateUserAccount();
+                }
+            }
             else
             {
+                user.firstName = entryAccFirstName.Text;
+                user.lastName = entryAccLastName.Text;
+                user.email = entryAccEmail.Text;
+                user.phone = entryAccPhone.Text;
                 isActivitySpinnerShowing(true);
                 updateUserAccount();
 
             }
 
         }
-        public void isActivitySpinnerShowing(bool status)
-        {
-            if (status.Equals(true))
-            {
-                updateLayout.IsVisible = false;
-                updateLayout.IsEnabled = false;
-                activitySpinnerAccountLayout.IsVisible = true;
-                updateAccountLoader.IsVisible = true;
-                updateAccountLoader.IsRunning = true;
-                updateAccountLoader.IsEnabled = true;
-
-            }
-            if (status.Equals(false))
-            {
-                activitySpinnerAccountLayout.IsVisible = false;
-                updateLayout.IsVisible = true;
-                updateLayout.IsEnabled = true;
-                updateAccountLoader.IsVisible = false;
-                updateAccountLoader.IsRunning = false;
-                updateAccountLoader.IsEnabled = false;
-
-            }
-        }
 
         public async void updateUserAccount()
         {
-            user.updateUser(entryAccFirstName.Text, entryAccLastName.Text, entryAccEmail.Text, entryAccPhone.Text, entryAccPassword.Text);
+            user.updateUser(user.firstName, user.lastName, user.email, user.phone, user.password);
             try
             {
                 bool flag = await userController.updateModel(user);
@@ -142,6 +134,35 @@ namespace ExpenseManager.Views
                 Debug.WriteLine(ex.Message);
             }
 
+        }
+
+        private bool passwordsMatch(string password, string confirmPassword)    //checks to see if new password and confirm password match
+        {
+            return password.Equals(confirmPassword);
+        }
+
+        public void isActivitySpinnerShowing(bool status)
+        {
+            if (status.Equals(true))
+            {
+                updateLayout.IsVisible = false;
+                updateLayout.IsEnabled = false;
+                activitySpinnerAccountLayout.IsVisible = true;
+                updateAccountLoader.IsVisible = true;
+                updateAccountLoader.IsRunning = true;
+                updateAccountLoader.IsEnabled = true;
+
+            }
+            if (status.Equals(false))
+            {
+                activitySpinnerAccountLayout.IsVisible = false;
+                updateLayout.IsVisible = true;
+                updateLayout.IsEnabled = true;
+                updateAccountLoader.IsVisible = false;
+                updateAccountLoader.IsRunning = false;
+                updateAccountLoader.IsEnabled = false;
+
+            }
         }
 
     }

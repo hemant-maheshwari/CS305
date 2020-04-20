@@ -60,6 +60,11 @@ namespace ExpenseManager.Views
             return await friendController.getAllFriendsInfo(userId);
         }
 
+        public void verifyTransactionForm(object sender, EventArgs e)
+        {
+
+        }
+
         private void isAddedFriendsLayoutShowing(bool status)
         {
             if (status.Equals(true)){
