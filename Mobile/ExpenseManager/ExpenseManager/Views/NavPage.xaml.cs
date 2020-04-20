@@ -17,12 +17,12 @@ namespace ExpenseManager.Views
         User user;
         public NavPage(User user)
         {
-            Application.Current.Properties[CommonSettings.USER_SETTING] = user;
+            Application.Current.Properties[CommonSettings.GLOBAL_USER] = user;
             InitializeComponent();
             Init();
         }
 
-        public NavPage()
+        public NavPage()  
         {
             InitializeComponent();
             Init();

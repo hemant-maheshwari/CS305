@@ -18,7 +18,7 @@ namespace ExpenseManager.Views
     {
         TransactionController transactionController;
         FriendController friendController;
-        TransactionPageModel transactionsPageModel;
+        TransactionViewModel transactionsPageModel;
         User user;
 
         public TransactionsPage()
@@ -33,13 +33,13 @@ namespace ExpenseManager.Views
             BackgroundColor = Constants.backgroundColor;
             transactionController = new TransactionController();
             friendController = new FriendController();
-            transactionsPageModel = new TransactionPageModel();
+            transactionsPageModel = new TransactionViewModel();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            user = Application.Current.Properties[CommonSettings.USER_SETTING] as User;
+            user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
             transactionsPageModel.friendsList = await initializeFriendsList(user.userId);
             friendsPicker.ItemsSource = transactionsPageModel.friendsListToString();
         }
@@ -55,7 +55,7 @@ namespace ExpenseManager.Views
         //DisplayAlert("test","test","ok");
         //lblFriendsList.Text = lblFriendsList.Text + ", " + friendsPicker.SelectedItem;
 
-        private async Task<List<FriendInfo>> initializeFriendsList(int userId)
+        private async Task<List<FriendViewModel>> initializeFriendsList(int userId)
         {
             return await friendController.getAllFriendsInfo(userId);
         }

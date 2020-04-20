@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseManager.Android", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseManager.iOS", "ExpenseManager\ExpenseManager.iOS\ExpenseManager.iOS.csproj", "{D0360B01-8B3F-447F-9312-673638FBCC90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseManager", "ExpenseManager\ExpenseManager\ExpenseManager.csproj", "{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseManager", "ExpenseManager\ExpenseManager\ExpenseManager.csproj", "{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

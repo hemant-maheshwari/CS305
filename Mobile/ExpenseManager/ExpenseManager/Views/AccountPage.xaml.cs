@@ -35,7 +35,7 @@ namespace ExpenseManager.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            BindingContext = this.user = Application.Current.Properties[CommonSettings.USER_SETTING] as User;
+            BindingContext = this.user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
         }
 
         public void updateUserForm(object sender, EventArgs e)

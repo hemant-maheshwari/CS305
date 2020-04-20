@@ -4,14 +4,14 @@ using ExpenseManager.Models;
 
 namespace ExpenseManager.ViewModels
 {
-    public class TransactionPageModel
+    public class TransactionViewModel
     {
-        public List<FriendInfo> friendsList { get; set; }
+        public List<FriendViewModel> friendsList { get; set; }
         public Transaction transaction { get; set; }
 
-        public TransactionPageModel()
+        public TransactionViewModel()
         {
-            friendsList = new List<FriendInfo>();
+            friendsList = new List<FriendViewModel>();
             transaction = new Transaction();
         }
 

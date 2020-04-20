@@ -26,7 +26,15 @@ namespace ExpenseManager.Service
             return user;
         }
 
-        
+        private List<FriendViewModel> getFriendViewModelFromResponse(Response response)
+        {
+            string stringFriendList = response.data;
+            FriendViewModel[] friendViewModelArray = JsonConvert.DeserializeObject<FriendViewModel[]>(stringFriendList);
+            return friendViewModelArray.ToList<FriendViewModel>();
+
+        }
+
+
         public async Task<bool> checkUsernameAsync(string username) {
             string url = WEB_API_BASE_URL + "user/check/"+username;
             //var json = JsonConvert.SerializeObject(user);
@@ -78,29 +86,23 @@ namespace ExpenseManager.Service
             }
         }
 
-        public async Task<List<FriendInfo>> getAllFriendsInfoAsync(int userId)
+        public async Task<List<FriendViewModel>> getAllFriendsInfoAsync(int userId)
         {
             string url = WEB_API_BASE_URL + "friend/getAllFriendInfo/" + userId;
             HttpResponseMessage response = await httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 Response responseObject = await getHTTPResponse(response);
-                return getListFriendsInfoFromResponse(responseObject);
+                return getFriendViewModelFromResponse(responseObject);
             }
             else
             {
                 Debug.WriteLine("Error Occured!");
-                return default(List<FriendInfo>);
+                return default(List<FriendViewModel>);
             }
         }
 
-        private List<FriendInfo> getListFriendsInfoFromResponse(Response response)
-        {
-            string stringFriendList = response.data;
-            FriendInfo[] friendInfoArray = JsonConvert.DeserializeObject<FriendInfo[]>(stringFriendList);
-            return friendInfoArray.ToList<FriendInfo>();
-
-        }
+       
 
     }
 }

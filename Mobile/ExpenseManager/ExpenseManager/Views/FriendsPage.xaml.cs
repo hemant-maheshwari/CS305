@@ -1,4 +1,7 @@
-﻿using ExpenseManager.Models;
+﻿using ExpenseManager.Controller;
+using ExpenseManager.Models;
+using ExpenseManager.Util;
+using ExpenseManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,8 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FriendsPage : ContentPage
     {
+        private FriendController friendController;
+        private User user;
         public FriendsPage()
         {
             InitializeComponent();
@@ -23,21 +28,48 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-
-
+            boxViewFriends.Color = Constants.logoColorYellow;
+            friendController = new FriendController();
         }
 
-        protected override void OnAppearing()
+
+
+
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            List<FriendViewModel> friends = await friendController.getAllFriendsInfo(user.userId);
+            friendsListView.ItemsSource = friends;
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
+
+        public void isActivitySpinnerShowing(bool status) //determines the visibility activity spinner
         {
+            if (status.Equals(true))
+            {
+                followingLayout.IsVisible = false;
+                followingLayout.IsEnabled = false;
+                activitySpinnerFriendsLayout.IsVisible = true;
+                friendsLoader.IsVisible = true;
+                friendsLoader.IsRunning = true;
+                friendsLoader.IsEnabled = true;
+
+            }
+            if (status.Equals(false))
+            {
+                activitySpinnerFriendsLayout.IsVisible = false;
+                followingLayout.IsVisible = true;
+                followingLayout.IsEnabled = true;
+                friendsLoader.IsVisible = false;
+                friendsLoader.IsRunning = false;
+                friendsLoader.IsEnabled = false;
+
+            }
+
         }
+
+
 
     }
-
-
-
 }

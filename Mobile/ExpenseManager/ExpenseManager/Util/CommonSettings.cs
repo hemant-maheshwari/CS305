@@ -5,6 +5,6 @@ namespace ExpenseManager.Util
 {
     public static class CommonSettings
     {
-        public static string USER_SETTING = "user_setting";
+        public static string GLOBAL_USER = "global_user";
     }
 }

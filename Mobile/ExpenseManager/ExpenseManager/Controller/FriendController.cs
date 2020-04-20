@@ -15,7 +15,7 @@ namespace ExpenseManager.Controller
             restAPIService = new RestAPIService();
         }
 
-        public async Task<List<FriendInfo>> getAllFriendsInfo(int userId)
+        public async Task<List<FriendViewModel>> getAllFriendsInfo(int userId)
         {
             return await restAPIService.getAllFriendsInfoAsync(userId);
         }
