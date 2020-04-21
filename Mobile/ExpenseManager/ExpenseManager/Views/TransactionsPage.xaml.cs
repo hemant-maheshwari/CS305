@@ -19,16 +19,19 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TransactionsPage : ContentPage
     {
-        TransactionController transactionController;
-        FriendController friendController;
-        TransactionViewModel transactionsPageModel;
-        User user;
+        private TransactionController transactionController;
+        private FriendController friendController;
+        private TransactionViewModel transactionsPageModel;
+        private TotalController totalController;
+        private User user;
+        private Total total;
+        private List<Friend> friends;
 
         private string imagePath;
 
         public TransactionsPage()
         {
-            
+
             InitializeComponent();
             Init();
         }
@@ -39,14 +42,17 @@ namespace ExpenseManager.Views
             transactionController = new TransactionController();
             friendController = new FriendController();
             transactionsPageModel = new TransactionViewModel();
+            totalController = new TotalController();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            total = await totalController.getModel(user.userId);
             transactionsPageModel.friendsList = await initializeFriendsList(user.userId);
             friendsPicker.ItemsSource = transactionsPageModel.friendsListToString();
+            friends = await friendController.getAllModels(user.userId);
         }
 
         private async Task<List<FriendViewModel>> initializeFriendsList(int userId)
@@ -56,25 +62,20 @@ namespace ExpenseManager.Views
 
         public void verifyTransactionForm(object sender, EventArgs e)
         {
-            if(entryTranscationTitle.Text == null || entryTranscationTitle.Text == "")
+            if (entryTranscationTitle.Text == null || entryTranscationTitle.Text == "")
             {
                 DisplayAlert("Invalid Title", "Please enter a title for your transaction.", "Okay");
                 entryTranscationTitle.Focus();
             }
-            else if(pickerTransactionType.SelectedItem == null)
+            else if (pickerTransactionType.SelectedItem == null)
             {
                 DisplayAlert("Invalid Type", "Please select your transaction type.", "Okay");
                 pickerTransactionType.Focus();
             }
-            else if(entryTransactionAmount.Text == null || entryTransactionAmount.Text == "")
+            else if (entryTransactionAmount.Text == null || entryTransactionAmount.Text == "")
             {
                 DisplayAlert("Invalid Amount", "Please select an amount for this transaction.", "Okay");
                 entryTransactionAmount.Focus();
-            }
-            else if(friendsPicker.SelectedItem == null)
-            {
-                DisplayAlert("Invalid Friend", "Please select a friend.", "Okay");
-                friendsPicker.Focus();
             }
             else
             {
@@ -84,25 +85,35 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void createTransaction() // creation of a new post with required fields
+        private int getFriendId()
+        {
+            int friendIndex = friendsPicker.SelectedIndex;
+            int friendId = transactionsPageModel.friendsList[friendIndex].friendId;
+            return friendId;
+        }
+
+        private void createTransaction() // creation of a new post with required fields
         {
             try
             {
+                string expenseType = pickerTransactionType.SelectedItem.ToString();
                 string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
-                string imageString = imageToBase64();
-                Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, pickerTransactionType.SelectedItem.ToString(), Double.Parse(entryTransactionAmount.Text), friendsPicker.SelectedItem.ToString(), imageString, todayDate);
-                bool flag = await transactionController.createModel(transaction);
-                if (flag)
+                if (expenseType.Equals("Expense") && friendsPicker.SelectedItem != null) {
+                    createSharedTransaction();
+                }
+                else if (expenseType.Equals("Expense") && friendsPicker.SelectedItem == null)
                 {
-                    await DisplayAlert("Message", "Transaction created successfully!", "Okay");
-                    App.Current.MainPage = new ActivityPage();
+                    createPersonalTransaction();
+                }
+                else if (expenseType.Equals("Income"))
+                {
+                    createIncome();
                 }
                 else
                 {
-                    isActivitySpinnerShowing(false);
-                    isAddTransactionLayoutShowing(true);
-                    await DisplayAlert("Message", "Error Occured!", "Okay");
-                } 
+                    DisplayAlert("Error", "Something went wrong!", "Okay");
+                }
+
             }
             catch (Exception ex)
             {
@@ -110,6 +121,92 @@ namespace ExpenseManager.Views
                 isAddTransactionLayoutShowing(true);
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        private async void createIncome()
+        {
+            string imageString = imageToBase64(); //create if statement
+            Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Income", Double.Parse(entryTransactionAmount.Text), 0, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
+            bool flag = await transactionController.createModel(transaction);
+            if (flag)
+            {
+                total.incomeAmount += getTotalTransactionAmount();
+                await totalController.updateModel(total);
+                await DisplayAlert("Message", "Transaction created successfully!", "Okay");
+                App.Current.MainPage = new NavPage(user);
+            }
+            else
+            {
+                isActivitySpinnerShowing(false);
+                isAddTransactionLayoutShowing(true);
+                await DisplayAlert("Message", "Error Occured!", "Okay");
+            }
+        }
+
+        private async void createPersonalTransaction()
+        {
+            string imageString = imageToBase64(); //create if statement
+            Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Expense", Double.Parse(entryTransactionAmount.Text), 0, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
+            bool flag = await transactionController.createModel(transaction);
+            if (flag)
+            {
+                total.expenseAmount += getTotalTransactionAmount();
+                await totalController.updateModel(total);
+                await DisplayAlert("Message", "Transaction created successfully!", "Okay");
+                App.Current.MainPage = new NavPage(user);
+            }
+            else
+            {
+                isActivitySpinnerShowing(false);
+                isAddTransactionLayoutShowing(true);
+                await DisplayAlert("Message", "Error Occured!", "Okay");
+            }
+        }
+
+        private async void createSharedTransaction(){
+            int friendId = getFriendId();
+            string imageString = imageToBase64(); //create if statement
+            Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Expense", Double.Parse(entryTransactionAmount.Text), friendId, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
+            bool flag = await transactionController.createModel(transaction);
+            if (flag)
+            {
+                Friend friend = getSelectedFriend(friendId);
+                friend.amount += getAmount();
+                flag = await friendController.updateModel(friend);
+                if (flag)
+                {
+                    total.expenseAmount += getTotalTransactionAmount();
+                    await totalController.updateModel(total);
+                    await DisplayAlert("Message", "Transaction created successfully!", "Okay");
+                    App.Current.MainPage = new NavPage(user);
+                }
+            }
+            else
+            {
+                isActivitySpinnerShowing(false);
+                isAddTransactionLayoutShowing(true);
+                await DisplayAlert("Message", "Error Occured!", "Okay");
+            }
+        }
+
+        private double getTotalTransactionAmount()
+        {
+            return Double.Parse(entryTransactionAmount.Text);
+        }
+
+        private double getAmount()
+        {
+            return Double.Parse(entryTransactionAmount.Text) / 2;
+        }
+
+        private Friend getSelectedFriend(int userId)
+        {
+            for(int i = 0; i < friends.Count; i++)
+            {
+                if (friends[i].userId2 == userId)
+                    return friends[i];
+            }
+            return default(Friend);
         }
 
         private void isAddTransactionLayoutShowing(bool status)
@@ -123,6 +220,20 @@ namespace ExpenseManager.Views
             {
                 addTransactionLayout.IsVisible = false;
                 addTransactionLayout.IsEnabled = false;
+            }
+        }
+
+        public void showHideFriendsPicker(object sender, EventArgs e)
+        {
+            if(pickerTransactionType.SelectedItem.Equals("Expense"))
+            {
+                friendsPicker.IsEnabled = true;
+                friendsPicker.IsVisible = true;
+            }
+            else
+            {
+                friendsPicker.IsEnabled = false;
+                friendsPicker.IsVisible = false;
             }
         }
 
@@ -148,11 +259,16 @@ namespace ExpenseManager.Views
 
         public string imageToBase64() // converting image to base64
         {
-
-            using (var image = File.OpenRead(imagePath))            {                using (MemoryStream m = new MemoryStream())                {
-
-                    image.CopyTo(m);                    byte[] imageBytes = m.ToArray();                    string base64String = Convert.ToBase64String(imageBytes);                    return base64String;                }            }        }
-
+            if(imagePath != null)
+            {
+                using (var image = File.OpenRead(imagePath))                {                    using (MemoryStream m = new MemoryStream())                    {
+                        image.CopyTo(m);                        byte[] imageBytes = m.ToArray();                        string base64String = Convert.ToBase64String(imageBytes);                        return base64String;                    }                }
+            }
+            else
+            {
+                return "";
+            }
+                    }
 
         public interface CameraInterface //interface for selecting picture
         {

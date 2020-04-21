@@ -20,8 +20,5 @@ namespace ExpenseManager.Controller
         //getAll return List<object>
         //transaction/get/{transid}- GET
         //trascation/create - POST
-
-
-
     }
 }

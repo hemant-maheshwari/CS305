@@ -7,13 +7,12 @@ namespace ExpenseManager.ViewModels
         public string lastName { get; set; }
         public int friendId { get; set; }
 
-        public FriendViewModel()
-        {
-        }
+        public FriendViewModel(){}
+
         public string toString()
         {
             return firstName + " " + lastName;
         }
 
-        }
+    }
 }

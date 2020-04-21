@@ -22,7 +22,5 @@ namespace ExpenseManager.ViewModels
             }
             return friendListString;
         }
-
-
     }
 }

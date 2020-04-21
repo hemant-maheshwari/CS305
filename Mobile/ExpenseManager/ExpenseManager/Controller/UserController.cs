@@ -23,6 +23,7 @@ namespace ExpenseManager.Controller
 
         //user/check/{username}- GET
         //user/create - POST
+
         public async Task<bool> checkUsername(string username)
         {
             return await restAPIService.checkUsernameAsync(username);
@@ -37,8 +38,5 @@ namespace ExpenseManager.Controller
         {
             return await restAPIService.getUserFromUsernameAsync(username);
         }
-     
-
-        //public async Task<User> getUser(int userId);
     }
 }

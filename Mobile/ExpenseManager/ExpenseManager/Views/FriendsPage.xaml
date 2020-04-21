@@ -16,12 +16,10 @@
                     <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
                 </OnIdiom>
             </StackLayout.Padding>
-
             <StackLayout x:Name="activitySpinnerFriendsLayout" IsVisible="False" IsEnabled="False">
                 <ActivityIndicator x:Name="friendsLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
                 <Label Text="Loading Friends..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
             </StackLayout>
-
             <StackLayout Orientation="Horizontal">
                 <Image x:Name="LoginIcon" Source="LoginIcon.png" HeightRequest="60"  Margin="0,0,0,0" Grid.Row="0" Grid.Column="0"/>
                 <Label Text="Friends"  Margin="12,15,0,0" FontAttributes="Bold" FontSize="Large" TextColor="White" FontFamily="MS Gothic"  />
@@ -46,6 +44,5 @@
                 </ListView>
             </StackLayout>
         </StackLayout>
-
     </ContentPage.Content>
  </ContentPage>

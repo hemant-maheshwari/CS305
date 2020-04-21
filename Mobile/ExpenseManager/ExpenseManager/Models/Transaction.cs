@@ -15,18 +15,19 @@ namespace ExpenseManager.Models
         public string type { get; set; }
         public double amount { get; set; }
         //public List<string> friends { get; set; }
-        public string friend { get; set; }
+        //public string friend { get; set; }
         public string transactionPicture { get; set; } //photo of receipt
         public string dateCreated { get; set; }
-        //public string dateUpdated { get; set; }
+        public int friendId { get; set; }
+        public string dateUpdated { get; set; }
 
-        public Transaction(int userId, string title, string type, double amount, string friend, string transactionPicture, string dateCreated)
+        public Transaction(int userId, string title, string type, double amount, int friendId, string transactionPicture, string dateCreated)
         {
             this.userId = userId;
             this.title = title;
             this.type = type;
             this.amount = amount;
-            this.friend = friend;
+            this.friendId = friendId;
             this.transactionPicture = transactionPicture;
             this.dateCreated = dateCreated;
         }

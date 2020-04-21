@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace ExpenseManagerWebServiceAPI.Handlers
 {
-    interface ITransactionDataHandler
+    public interface ITransactionDataHandler
     {
+        bool createTransaction();
     }
 }

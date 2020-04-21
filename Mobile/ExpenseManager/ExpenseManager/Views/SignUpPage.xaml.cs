@@ -17,14 +17,18 @@ namespace ExpenseManager.Views
     public partial class SignUpPage : ContentPage
     {
         private UserController userController;
+        private TotalController totalController;
+
         public SignUpPage()
         {
             InitializeComponent();
             Init();
         }
+
         void Init()
         {
             userController = new UserController();
+            totalController = new TotalController();
             BackgroundColor = Constants.backgroundColor;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
             signUpLoader.IsVisible = false;
@@ -74,7 +78,6 @@ namespace ExpenseManager.Views
             {
                 DisplayAlert("Invalid Phone Number", "Please enter a phone number.", "Okay");
                 entryPhoneNumber.Focus();
-
             }
             else if (entryPhoneNumber.Text.Length < 10 || entryPhoneNumber.Text.Length > 11)
             {
@@ -86,7 +89,6 @@ namespace ExpenseManager.Views
             {
                 isActivitySpinnerShowing(true);
                 createUserAccount();
-
             }
         }
 
@@ -110,10 +112,8 @@ namespace ExpenseManager.Views
                 signUpLoader.IsVisible = false;
                 signUpLoader.IsRunning = false;
                 signUpLoader.IsEnabled = false;
-
             }
         }
-
 
         private async Task<bool> checkUsernameExistence(string username)
         {
@@ -130,9 +130,22 @@ namespace ExpenseManager.Views
                     bool flag = await userController.createModel(user);
                     if (flag)
                     {
-                        isActivitySpinnerShowing(false);
-                        await DisplayAlert("Message", "User account created successfully!", "Okay");
-                        App.Current.MainPage = new LoginPage();
+                        user = await userController.getUserFromUsername(user.username);
+                        Total total = new Total(user.userId, 0, 0);
+                        flag = await totalController.createModel(total);
+                        if (flag)
+                        {
+                            isActivitySpinnerShowing(false);
+                            await DisplayAlert("Message", "User account created successfully!", "Okay");
+                            App.Current.MainPage = new LoginPage();
+                        }
+                        else
+                        {
+                            await userController.deleteModel(user.userId);
+                            isActivitySpinnerShowing(false);
+                            await DisplayAlert("Message", "Error Occured!", "Okay");
+                        }
+                        
                     }
                     else
                     {
