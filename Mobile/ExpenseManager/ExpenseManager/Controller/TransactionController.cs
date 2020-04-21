@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace ExpenseManager.Controller
 {
-    public class TransactionController:BaseController<Transaction>
+    public class TransactionController : BaseController<Transaction>
     {
         private RestAPIService restAPIService;
 

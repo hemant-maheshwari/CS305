@@ -12,6 +12,7 @@
 
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
         <StackLayout.Padding>
             <OnIdiom x:TypeArguments="Thickness" >
@@ -32,15 +33,14 @@
                 <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
                 <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12"/>
             </StackLayout>
-            <StackLayout>
+            <StackLayout x:Name="addTransactionLayout">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Title: " TextColor="White" FontSize="25"/>
                     <Entry x:Name="entryTranscationTitle" Placeholder="Enter Title" TextColor="White" PlaceholderColor="LightGray" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
-                    <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Expense</x:String>
@@ -51,28 +51,27 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
-                    <Entry x:Name="entryTransactionAmount" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
+                    <Entry x:Name="entryTransactionAmount" TextColor="White" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
                 </StackLayout>
-                <StackLayout x:Name="addedFriendsLayout">
-                    <Label Text="Friends: " TextColor="White" FontSize="25" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
-                    <Label x:Name="lblFriendsList" Text="" TextColor="White" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                    <StackLayout>
-                        <Button x:Name="btnAddFriend" BackgroundColor="DarkOrange" Text="Add Friend" TextColor="White" HorizontalOptions="Center" Clicked="showFriendsList" FontSize="15" HeightRequest="40"/>
-                    </StackLayout> 
-                </StackLayout>
-                <StackLayout x:Name="friendsPickerLayout" IsVisible="False" IsEnabled="False">
-                    <Picker x:Name="friendsPicker" IsVisible="False" IsEnabled="False" Title="Select a friend to add" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <StackLayout x:Name="friendsPickerLayout">
+                    <Picker x:Name="friendsPicker" TextColor="White" Title="Select a friend to add" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Receipt" TextColor="White" HorizontalTextAlignment="Center" FontSize="20" Margin="0,5,0,0"/>
                     <StackLayout VerticalOptions="FillAndExpand">
-                        <ImageButton x:Name="btnAddReceiptImageIcon" HeightRequest="40" BackgroundColor="Transparent" Source="addImageIcon.png" HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
+                        <ImageButton x:Name="btnAddReceiptImageIcon" HeightRequest="40" BackgroundColor="Transparent" Source="addImageIcon.png" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Clicked="pickPhotoButton"/>
+                        <Image x:Name="imgReceipt" Source="pickPhotoButton"/>
                     </StackLayout>
                 </StackLayout>
+                <StackLayout>
+                    <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,10,0,0" HorizontalOptions="Center" HeightRequest="40" Clicked="verifyTransactionForm"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Button x:Name="btnAddTransaction" CornerRadius="5" BackgroundColor="DarkOrange" Text="Add Transaction" TextColor="White" Margin="0,40,0,0" HorizontalOptions="Center" HeightRequest="40" Clicked="verifyTransactionForm"/>
+            <StackLayout x:Name="activitySpinnerLayout" IsEnabled="False" IsVisible="False">
+                <ActivityIndicator x:Name="activitySpinner" Color="DarkOrange" IsRunning="False" IsVisible="False" IsEnabled="False"/>
+                <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

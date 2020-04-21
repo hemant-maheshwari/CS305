@@ -37,8 +37,9 @@
                     <Entry x:Name="entryAccPassword" Placeholder="Password" TextColor="White" PlaceholderColor="LightGray" IsPassword="True"/>
                     <Entry x:Name="entryAccConfirmPassword" Placeholder="Confirm Password" TextColor="White" PlaceholderColor="LightGray" IsPassword="True"/>
                 </StackLayout>
-                <StackLayout Margin="0,40">
+                <StackLayout Margin="0,10">
                     <Button x:Name="btnUpdateAccInfo" CornerRadius="5" BackgroundColor="DarkOrange" Text="Update Information" TextColor="White" HorizontalOptions="Center" Clicked="updateUserForm"/>
+                    <Button x:Name="btnLogOut" CornerRadius="5" BackgroundColor="DarkOrange" Text="Log Out" TextColor="White" HorizontalOptions="Center" Clicked="logOut"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

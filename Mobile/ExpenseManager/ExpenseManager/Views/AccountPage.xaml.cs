@@ -141,6 +141,11 @@ namespace ExpenseManager.Views
             return password.Equals(confirmPassword);
         }
 
+        public void logOut(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
+
         public void isActivitySpinnerShowing(bool status)
         {
             if (status.Equals(true))
