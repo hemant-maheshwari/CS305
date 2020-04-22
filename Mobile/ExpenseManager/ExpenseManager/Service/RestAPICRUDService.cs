@@ -26,7 +26,7 @@ namespace ExpenseManager.Service
         }
 
         //user/delete/23
-        public async Task<bool> deleteModelAsync(int searchId) {
+        public async Task<bool> deleteModelAsync(int searchId) { //deletes model in database
             string url = WEB_API_BASE_URL + getWebAPIControllerName() + FORWARD_SLASH + ACTION_DELETE + FORWARD_SLASH + searchId;
             try
             {
@@ -50,7 +50,7 @@ namespace ExpenseManager.Service
         }
 
         //user/getAll/23
-        public async Task<List<T>> getAllModelAsync(int searchId)
+        public async Task<List<T>> getAllModelAsync(int searchId) //gets list of all records with searchId in database
         {
             string url = WEB_API_BASE_URL + getWebAPIControllerName() + FORWARD_SLASH + ACTION_GET_ALL + FORWARD_SLASH + searchId;
             try
@@ -75,7 +75,7 @@ namespace ExpenseManager.Service
         }
 
         //user/get/23
-        public async Task<T> getModelAsync(int searchId)
+        public async Task<T> getModelAsync(int searchId) //gets model with search id in database
         {
             string url = WEB_API_BASE_URL + getWebAPIControllerName() + FORWARD_SLASH + ACTION_GET + FORWARD_SLASH + searchId;
             try
@@ -99,26 +99,26 @@ namespace ExpenseManager.Service
             }
         }        
 
-        public async Task<bool> updateModelAsync(T modelObject)
+        public async Task<bool> updateModelAsync(T modelObject) //updates model in database
         {
             return await saveModelAsync(modelObject, ACTION_UPDATE);
         }
 
-        private async Task<Response> getHTTPResponse(HttpResponseMessage response)
+        private async Task<Response> getHTTPResponse(HttpResponseMessage response) //gets response object from httpresponsemessage object
         {
             string result = await response.Content.ReadAsStringAsync();
             Response responseObject = JsonConvert.DeserializeObject<Response>(result);
             return responseObject;
         }
 
-        private T getModelFromResponse(Response response)
+        private T getModelFromResponse(Response response) //gets model object from reponse object
         {
             string userString = response.data;
             T returnedModel = JsonConvert.DeserializeObject<T>(userString);
             return returnedModel;
         }
 
-        private List<T> getListModelFromResponse(Response response)
+        private List<T> getListModelFromResponse(Response response) //gets a list of model object from response object
         {
             string listString = response.data;
             T[] returnedModel = JsonConvert.DeserializeObject<T[]>(listString);
@@ -126,7 +126,7 @@ namespace ExpenseManager.Service
             return modelList;
         }
 
-        private string getWebAPIControllerName() {
+        private string getWebAPIControllerName() { //returns the webapicontroller name
             string[] fullNameArray = typeof(T).ToString().ToLower().Split('.');
             string controllerName = fullNameArray[fullNameArray.Length - 1];
             return controllerName;
@@ -134,7 +134,7 @@ namespace ExpenseManager.Service
 
         //Total total, typeof(T)- ExpenseManager.Models.User string[3] = {expensemanager, models, user} 
 
-        private async Task<bool> saveModelAsync(T modelObject, string methodName) {
+        private async Task<bool> saveModelAsync(T modelObject, string methodName) { //saves model object in database
             string url = WEB_API_BASE_URL + getWebAPIControllerName() + FORWARD_SLASH + methodName;
             try
             {
