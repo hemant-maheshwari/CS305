@@ -24,17 +24,17 @@ namespace ExpenseManager.Controller
         //user/check/{username}- GET
         //user/create - POST
 
-        public async Task<bool> checkUsername(string username)
+        public async Task<bool> checkUsername(string username) //calls on restAPIService to see if username exists
         {
             return await restAPIService.checkUsernameAsync(username);
         }
 
-        public async Task<User> checkUser(User user)
+        public async Task<User> checkUser(User user) //calls on restapiservice to see if user exists
         {
             return await restAPIService.checkUserAsync(user);
         }
 
-        public async Task<User> getUserFromUsername(String username)
+        public async Task<User> getUserFromUsername(String username) //returns user object from username
         {
             return await restAPIService.getUserFromUsernameAsync(username);
         }
