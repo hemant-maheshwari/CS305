@@ -14,13 +14,13 @@ namespace ExpenseManager.Service
     public class RestAPIService: WebAPIConfiguration
     {
         
-        private async Task<Response> getHTTPResponse(HttpResponseMessage response) {
+        private async Task<Response> getHTTPResponse(HttpResponseMessage response) { //gets Reponse object from HTTPResponseMessage object
             string result = await response.Content.ReadAsStringAsync();
             Response responseObject = JsonConvert.DeserializeObject<Response>(result);
             return responseObject;
         }
 
-        private User getUserFromResponse(Response response) {
+        private User getUserFromResponse(Response response) { //gets user object from reponse object
             string userString = response.data;
             User user = JsonConvert.DeserializeObject<User>(userString);
             return user;
@@ -41,7 +41,7 @@ namespace ExpenseManager.Service
             return activityViewModelArray.ToList<ActivityViewModel>();
         }
 
-        public async Task<bool> checkUsernameAsync(string username) {
+        public async Task<bool> checkUsernameAsync(string username) { //checks is username exists in database
             string url = WEB_API_BASE_URL + "user/check/"+username;
             //var json = JsonConvert.SerializeObject(user);
             //var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -58,7 +58,7 @@ namespace ExpenseManager.Service
             }
         }
 
-        public async Task<User> checkUserAsync(User user)
+        public async Task<User> checkUserAsync(User user) //checks if user exists in database
         {
             string url = WEB_API_BASE_URL + "user/login/";
             var json = JsonConvert.SerializeObject(user);
@@ -76,7 +76,7 @@ namespace ExpenseManager.Service
             }
         }
 
-        public async Task<User> getUserFromUsernameAsync(string username)
+        public async Task<User> getUserFromUsernameAsync(string username) //gets user object from string username in database
         {
             string url = WEB_API_BASE_URL + "user/validateUsername/" + username;
             HttpResponseMessage response = await httpClient.GetAsync(url);
