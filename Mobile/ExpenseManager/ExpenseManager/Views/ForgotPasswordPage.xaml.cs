@@ -18,14 +18,14 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        public void Init()
+        public void Init() //initializes components on app startup
         {
             BackgroundColor = Constants.backgroundColor;
             userController = new UserController();
             user = new User();
         }
 
-        public async void verifyExistingUsername(object sender, EventArgs e)
+        public async void verifyExistingUsername(object sender, EventArgs e) //checks to see if username exists
         {
             isForgotPasswordLayoutShowing(false);
             isActivitySpinnerShowing(true);
@@ -52,13 +52,13 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async Task<User> getUserFromUsername(string username)
+        private async Task<User> getUserFromUsername(string username) //gets user from username
         {
             return await userController.getUserFromUsername(username);
         }
 
 
-        public async void verifyUpdatedPassword(object sender, EventArgs e)
+        public async void verifyUpdatedPassword(object sender, EventArgs e) //verifies in passwords were input correctly
         {
             if (passwordsMatch(entryNewPassword.Text, entryConfirmNewPassword.Text).Equals(false))
             {
@@ -73,7 +73,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void updatePassword(string password)
+        private async void updatePassword(string password) //updates user password and sends it to controller 
         {
             user.password = password;
             try
@@ -99,13 +99,13 @@ namespace ExpenseManager.Views
             }
         }
 
-        private bool passwordsMatch(string password, string confirmPassword)
+        private bool passwordsMatch(string password, string confirmPassword) //checks to see if new password fields are equal to each other
         {
             return password.Equals(confirmPassword);
         }
 
 
-        private void isActivitySpinnerShowing(bool status)
+        private void isActivitySpinnerShowing(bool status) //diplays/hides activity spinner
         {
             if (status.Equals(true))
             {
@@ -124,7 +124,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void isForgotPasswordLayoutShowing(bool status)
+        private void isForgotPasswordLayoutShowing(bool status) //displays/hides forgot password page
         {
             if (status.Equals(true))
             {
@@ -139,7 +139,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void isUpdatePasswordLayoutShowing(bool status)
+        private void isUpdatePasswordLayoutShowing(bool status) //displays/hides update password page
         {
             if (status.Equals(true))
             {
@@ -154,7 +154,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void goToLoginPage(object sender, EventArgs e)
+        private void goToLoginPage(object sender, EventArgs e) //returns user to login page
         {
             App.Current.MainPage = new LoginPage();
         }
