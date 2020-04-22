@@ -20,19 +20,19 @@ namespace ExpenseManager.Views
         private UserController userController;
         private User user;
 
-        public AccountPage()
+        public AccountPage()        
         {
             InitializeComponent();
             Init();
         }
 
-        public void Init()
+        public void Init()  //initializes components on startup of the app
         {
             BackgroundColor = Constants.backgroundColor;
             userController = new UserController();
         }
 
-        protected override void OnAppearing()
+        protected override void OnAppearing() //sets user object and entry fields when tab is clicked
         {
             base.OnAppearing();
             this.user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
@@ -42,7 +42,7 @@ namespace ExpenseManager.Views
             entryAccPhone.Text = user.phone;
         }
 
-        public void updateUserForm(object sender, EventArgs e)
+        public void updateUserForm(object sender, EventArgs e) //verifies if form was input correctly
         {
             if (entryAccFirstName.Text == " " || entryAccFirstName.Text == null)
             {
@@ -109,7 +109,7 @@ namespace ExpenseManager.Views
 
         }
 
-        public async void updateUserAccount()
+        public async void updateUserAccount() //updates user fields and sends it to controller to be updated
         {
             user.updateUser(user.firstName, user.lastName, user.email, user.phone, user.password);
             try
@@ -141,12 +141,12 @@ namespace ExpenseManager.Views
             return password.Equals(confirmPassword);
         }
 
-        public void logOut(object sender, EventArgs e)
+        public void logOut(object sender, EventArgs e) //takes user to logout page
         {
             App.Current.MainPage = new LoginPage();
         }
 
-        public void isActivitySpinnerShowing(bool status)
+        public void isActivitySpinnerShowing(bool status)  // displays/hides activity spinner
         {
             if (status.Equals(true))
             {
