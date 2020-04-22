@@ -7312,23 +7312,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Banso\\.nuget\\packages\\": {},
+    "C:\\Users\\Kyler\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+      "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\CS305Final\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
       "projectName": "ExpenseManagerWebServiceAPI",
-      "projectPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
-      "packagesPath": "C:\\Users\\Banso\\.nuget\\packages\\",
-      "outputPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\obj\\",
+      "projectPath": "C:\\Xamarin\\ExpenseManager\\CS305Final\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+      "packagesPath": "C:\\Users\\Kyler\\.nuget\\packages\\",
+      "outputPath": "C:\\Xamarin\\ExpenseManager\\CS305Final\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Banso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

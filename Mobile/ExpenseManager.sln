@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseManager.iOS", "Expen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseManager", "ExpenseManager\ExpenseManager\ExpenseManager.csproj", "{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensiveManagerTest", "ExpensiveManagerTest\ExpensiveManagerTest.csproj", "{35F959BE-A33B-418A-BBF2-87084D258505}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,18 @@ Global
 		{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{EAFAEDF4-FE2C-4382-9FF4-D64C10E031FC}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|iPhone.Build.0 = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{35F959BE-A33B-418A-BBF2-87084D258505}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

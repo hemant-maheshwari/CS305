@@ -7,8 +7,8 @@ namespace ExpenseManager.Util
 {
     public class WebAPIConfiguration
     {
-        protected static string IP = "10.246.16.24";
-        protected static string PORT = "45455";
+        protected static string IP = "localhost";
+        protected static string PORT = "44384";
         protected static string WEB_API_BASE_URL = "https://" + IP + ":" + PORT + "/v1/api/";
         protected static string HOSTNAME = "CN=" + IP;
         protected static string LOCALHOST = "CN=localhost";
