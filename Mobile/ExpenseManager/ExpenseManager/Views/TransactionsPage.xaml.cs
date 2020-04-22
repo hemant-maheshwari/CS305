@@ -36,7 +36,7 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        public void Init()
+        public void Init() //initializes components on startup
         {
             BackgroundColor = Constants.backgroundColor;
             transactionController = new TransactionController();
@@ -45,7 +45,7 @@ namespace ExpenseManager.Views
             totalController = new TotalController();
         }
 
-        protected override async void OnAppearing()
+        protected override async void OnAppearing() //initializes fields and settings when clicked on
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
@@ -55,12 +55,12 @@ namespace ExpenseManager.Views
             friends = await friendController.getAllModels(user.userId);
         }
 
-        private async Task<List<FriendViewModel>> initializeFriendsList(int userId)
+        private async Task<List<FriendViewModel>> initializeFriendsList(int userId) //returns a friends list for user id
         {
             return await friendController.getAllFriendsInfo(userId);
         }
 
-        public void verifyTransactionForm(object sender, EventArgs e)
+        public void verifyTransactionForm(object sender, EventArgs e) //verifies in form was input correctly
         {
             if (entryTranscationTitle.Text == null || entryTranscationTitle.Text == "")
             {
@@ -85,7 +85,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private int getFriendId()
+        private int getFriendId() //gets the user id of friends selected
         {
             int friendIndex = friendsPicker.SelectedIndex;
             int friendId = transactionsPageModel.friendsList[friendIndex].friendId;
@@ -123,9 +123,9 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void createIncome()
+        private async void createIncome() //creates an income record
         {
-            string imageString = imageToBase64(); //create if statement
+            string imageString = imageToBase64(); 
             Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Income", Double.Parse(entryTransactionAmount.Text), 0, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
             bool flag = await transactionController.createModel(transaction);
             if (flag)
@@ -143,9 +143,9 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void createPersonalTransaction()
+        private async void createPersonalTransaction() //creates a personal transaction record without a friend involved
         {
-            string imageString = imageToBase64(); //create if statement
+            string imageString = imageToBase64(); 
             Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Expense", Double.Parse(entryTransactionAmount.Text), 0, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
             bool flag = await transactionController.createModel(transaction);
             if (flag)
@@ -163,9 +163,9 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void createSharedTransaction(){
+        private async void createSharedTransaction(){ //creates a transaction with friend included
             int friendId = getFriendId();
-            string imageString = imageToBase64(); //create if statement
+            string imageString = imageToBase64(); 
             Transaction transaction = new Transaction(user.userId, entryTranscationTitle.Text, "Expense", Double.Parse(entryTransactionAmount.Text), friendId, imageString, DateTime.Now.ToString("yyyy-MM-dd"));
             bool flag = await transactionController.createModel(transaction);
             if (flag)
@@ -195,7 +195,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private double getTotalTransactionAmount()
+        private double getTotalTransactionAmount() //gets the total amount of transaction
         {
             return Double.Parse(entryTransactionAmount.Text);
         }
@@ -205,7 +205,7 @@ namespace ExpenseManager.Views
             return Double.Parse(entryTransactionAmount.Text) / 2;
         }
 
-        private Friend getSelectedFriend(int userId)
+        private Friend getSelectedFriend(int userId) //returns selected friend object
         {
             for(int i = 0; i < friends.Count; i++)
             {
@@ -225,7 +225,7 @@ namespace ExpenseManager.Views
             return default(Friend);
         }
 
-        private void isAddTransactionLayoutShowing(bool status)
+        private void isAddTransactionLayoutShowing(bool status) //displays/hides add transaction layout
         {
             if(status == true)
             {
@@ -239,7 +239,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        public void showHideFriendsPicker(object sender, EventArgs e)
+        public void showHideFriendsPicker(object sender, EventArgs e) //displays/hides friends picker
         {
             if(pickerTransactionType.SelectedItem.Equals("Expense"))
             {
@@ -253,7 +253,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void isActivitySpinnerShowing(bool status)
+        private void isActivitySpinnerShowing(bool status) //displays/hides activity spinner
         {
             if (status == true)
             {
