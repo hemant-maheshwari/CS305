@@ -25,7 +25,7 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        void Init()
+        void Init() //initializes components on startup
         {
             userController = new UserController();
             totalController = new TotalController();
@@ -34,7 +34,7 @@ namespace ExpenseManager.Views
             signUpLoader.IsVisible = false;
         }
 
-        public void verifyUserForm(object sender, EventArgs e)
+        public void verifyUserForm(object sender, EventArgs e) //verifies in sign up form was input correctly
         {
             if (entryFirstName.Text == " " || entryFirstName.Text == null)
             {
@@ -92,7 +92,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private void isActivitySpinnerShowing(bool status)
+        private void isActivitySpinnerShowing(bool status) //displays/hides activity spinner
         {
             if (status.Equals(true))
             {
@@ -115,12 +115,12 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async Task<bool> checkUsernameExistence(string username)
+        private async Task<bool> checkUsernameExistence(string username) //sees if new username already exists in database
         {
             return await userController.checkUsername(username);
         }
 
-        private async void createUserAccount()
+        private async void createUserAccount() //creates a user object with new fields and sends to controller to be created in database
         {
             User user = new User(entryUsername.Text, entryPassword.Text, entryFirstName.Text, entryLastName.Text, entryEmail.Text, entryPhoneNumber.Text);
             try
@@ -167,7 +167,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        public void goToLoginPage(object sender, EventArgs e)
+        public void goToLoginPage(object sender, EventArgs e) //returns user to login page
         {
             App.Current.MainPage = new LoginPage();
         }
