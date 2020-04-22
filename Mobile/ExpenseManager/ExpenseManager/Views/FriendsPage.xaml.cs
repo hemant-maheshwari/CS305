@@ -22,6 +22,7 @@ namespace ExpenseManager.Views
         {
             InitializeComponent();
             Init();
+
         }
 
         public void Init()
@@ -31,6 +32,9 @@ namespace ExpenseManager.Views
             friendController = new FriendController();
         }
 
+
+
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -38,6 +42,12 @@ namespace ExpenseManager.Views
             List<FriendViewModel> friends = await friendController.getAllFriendsInfo(user.userId);
             friendsListView.ItemsSource = friends;
         }
+
+        public void addFriendButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new AddFriendPage();
+        }
+
 
         public void isActivitySpinnerShowing(bool status) //determines the visibility activity spinner
         {
@@ -49,8 +59,9 @@ namespace ExpenseManager.Views
                 friendsLoader.IsVisible = true;
                 friendsLoader.IsRunning = true;
                 friendsLoader.IsEnabled = true;
+
             }
-            else
+            if (status.Equals(false))
             {
                 activitySpinnerFriendsLayout.IsVisible = false;
                 followingLayout.IsVisible = true;
@@ -58,7 +69,13 @@ namespace ExpenseManager.Views
                 friendsLoader.IsVisible = false;
                 friendsLoader.IsRunning = false;
                 friendsLoader.IsEnabled = false;
+
             }
+           
+
         }
+
+
+
     }
 }

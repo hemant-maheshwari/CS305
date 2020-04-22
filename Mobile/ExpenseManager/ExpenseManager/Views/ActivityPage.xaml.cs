@@ -1,4 +1,7 @@
-﻿using ExpenseManager.Models;
+﻿using ExpenseManager.Controller;
+using ExpenseManager.Models;
+using ExpenseManager.Util;
+using ExpenseManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,11 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ActivityPage : ContentPage
     {
+        private TransactionController transactionController;
+        //private UserController userController;
+        private User user;
+        
+
         public ActivityPage()
         {
             InitializeComponent();
@@ -24,17 +32,14 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
-
-
+            transactionController = new TransactionController();
         }
-
-        protected override void OnAppearing()
+        protected async override void OnAppearing() 
         {
             base.OnAppearing();
-        }
-
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
+            user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            List<ActivityViewModel> activity = await transactionController.getAllActivity(user.userId);
+            activityListView.ItemsSource = activity;
         }
 
     }

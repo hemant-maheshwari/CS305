@@ -1,4 +1,5 @@
 ﻿using ExpenseManager.Models;
+using ExpenseManagerWebServiceAPI.ViewModels;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
@@ -59,6 +60,47 @@ namespace ExpenseManagerWebServiceAPI.Handlers
                 conn.Close();           //closing DB connection
             }
             return response;
+        }
+
+        public List<ActivityViewModel> getAllActivity(int userId)
+        {
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            List<ActivityViewModel> activityViewModels = new List<ActivityViewModel>();
+            try
+            {
+                conn.Open();    //opening DB connection
+                mySqlCommand.Connection = conn;
+
+                mySqlCommand.CommandText = "get_all_activities";  //CREATE STORE PROCEDURE
+                mySqlCommand.CommandType = CommandType.StoredProcedure;
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("_user_id", userId));
+
+                //mySqlCommand.ExecuteNonQuery();
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ActivityViewModel activityViewModel = new ActivityViewModel();
+                    activityViewModel.amount = Double.Parse(reader["amount"].ToString());
+                    activityViewModel.firstName = reader["first_name"].ToString();
+                    activityViewModel.lastName = reader["last_name"].ToString();
+                    activityViewModel.transactionTitle = reader["title"].ToString();
+                    activityViewModels.Add(activityViewModel); //adding to Vendor List
+                }
+            }
+            catch (Exception ex)
+            {
+                //Log exception
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();           //closing DB connection
+            }
+            return activityViewModels;
         }
     }
 }

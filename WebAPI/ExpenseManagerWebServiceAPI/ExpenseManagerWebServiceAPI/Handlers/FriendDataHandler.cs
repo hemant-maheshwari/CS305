@@ -50,7 +50,7 @@ namespace ExpenseManagerWebServiceAPI.Handlers
                     friendInfo.friendId = Int32.Parse(reader["user_id"].ToString());
                     friendInfo.firstName = reader["first_name"].ToString();
                     friendInfo.lastName = reader["last_name"].ToString();
-
+                    friendInfo.amount = Double.Parse(reader["amount"].ToString());
 
                     friendInfos.Add(friendInfo); //adding to Vendor List
                 }

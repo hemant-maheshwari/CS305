@@ -24,11 +24,14 @@
 
         <StackLayout x:Name="addFriendLayout" IsEnabled="True" IsVisible="True" Orientation="Vertical">
 
-            <SearchBar x:Name="addFriendPageBar" Placeholder="Search User"  BackgroundColor="LightSlateGray" SearchButtonPressed="searchButtonPressed"/>
+            <SearchBar x:Name="addFriendPageBar" Placeholder="Search Username"  BackgroundColor="LightSlateGray" SearchButtonPressed="searchButtonPressed"/>
 
-            <Button x:Name="foundFriend" Text="" BorderColor="DarkOrange" CornerRadius="20" TextColor="Black" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label x:Name="instruction" Text="TAP ON USER TO ADD FRIEND"/>
+                <Button x:Name="foundFriend" Text="" BorderColor="DarkOrange" BackgroundColor="Transparent" CornerRadius="20" TextColor="Black" IsVisible="False" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Clicked="addFriend"/>
+            
+            </StackLayout>
+            <Button x:Name="btnBackHome" Text="Back to Home Page" Clicked="goToHomePage" Margin="0,600,0,0"/>
+
         </StackLayout>
-
-    </StackLayout>
     </ContentPage.Content>
 </ContentPage>

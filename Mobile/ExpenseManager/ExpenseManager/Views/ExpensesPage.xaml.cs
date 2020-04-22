@@ -17,8 +17,9 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpensesPage : ContentPage
     {
-
+        private TotalController totalController;
         private User user;
+        private Total total;
         public ExpensesPage()
         {
             InitializeComponent();
@@ -28,12 +29,18 @@ namespace ExpenseManager.Views
         public void Init()
         {
             BackgroundColor = Constants.backgroundColor;
+            totalController = new TotalController();
 
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
+            total = await totalController.getModel(user.userId);
+            lblExpenseAmount.Text = total.expenseAmount.ToString();
+            lblIncomeAmount.Text = total.incomeAmount.ToString();
+            lblWelcome.Text = "Welcome "+user.firstName+"!";
         }
     }
 }

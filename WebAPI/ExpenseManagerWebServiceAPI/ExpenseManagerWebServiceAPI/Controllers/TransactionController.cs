@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ExpenseManager.Models;
 using ExpenseManagerWebServiceAPI.Handlers;
+using ExpenseManagerWebServiceAPI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using PocketClosetWebServiceAPI.Models;
 
 namespace ExpenseManagerWebServiceAPI.Controllers
@@ -29,6 +32,25 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         public JsonResult deleteTransaction(int userId)
         {
             throw new NotImplementedException();
+        }
+
+        [Route("getAllActivity/{userId}")]
+        [HttpGet]
+        public JsonResult getAllActivity(int userId)
+        {
+            Response response = new Response();
+            try
+            {
+                TransactionDataHandler transactionDataHandler = new TransactionDataHandler(config);
+                List<ActivityViewModel> activityViewModels = transactionDataHandler.getAllActivity(userId);
+                response.status = true;
+                response.data = JsonConvert.SerializeObject(activityViewModels);
+            }
+            catch (Exception ex)
+            {
+                response.message = ex.Message;
+            }
+            return Json(response);
         }
 
         public IActionResult Index()

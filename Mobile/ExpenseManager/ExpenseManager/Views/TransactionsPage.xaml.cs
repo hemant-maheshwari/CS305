@@ -175,10 +175,16 @@ namespace ExpenseManager.Views
                 flag = await friendController.updateModel(friend);
                 if (flag)
                 {
-                    total.expenseAmount += getTotalTransactionAmount();
-                    await totalController.updateModel(total);
-                    await DisplayAlert("Message", "Transaction created successfully!", "Okay");
-                    App.Current.MainPage = new NavPage(user);
+                    Friend friend2 = await getFriend2(friendId);
+                    friend2.amount -= getAmount();
+                    flag = await friendController.updateModel(friend2);
+                    if (flag)
+                    {
+                        total.expenseAmount += getTotalTransactionAmount();
+                        await totalController.updateModel(total);
+                        await DisplayAlert("Message", "Transaction created successfully!", "Okay");
+                        App.Current.MainPage = new NavPage(user);
+                    }                   
                 }
             }
             else
@@ -205,6 +211,16 @@ namespace ExpenseManager.Views
             {
                 if (friends[i].userId2 == userId)
                     return friends[i];
+            }
+            return default(Friend);
+        }
+
+        private async Task<Friend> getFriend2(int userId) {
+            List<Friend> friendsList = await friendController.getAllModels(userId);
+            for (int i=0; i<friendsList.Count; i++) {
+                if (friendsList[i].userId2 == user.userId) {
+                    return friendsList[i];
+                }
             }
             return default(Friend);
         }

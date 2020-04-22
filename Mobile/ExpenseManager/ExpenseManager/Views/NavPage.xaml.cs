@@ -14,7 +14,7 @@ namespace ExpenseManager.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NavPage : TabbedPage
     {
-        User user;
+        //User user;
         public NavPage(User user)
         {
             Application.Current.Properties[CommonSettings.GLOBAL_USER] = user;

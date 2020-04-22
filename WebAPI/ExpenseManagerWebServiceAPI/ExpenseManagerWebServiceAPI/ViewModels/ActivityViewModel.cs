@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace ExpenseManagerWebServiceAPI.ViewModels
 {
-    public class FriendInfo
+    public class ActivityViewModel
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int friendId { get; set; }
-
+        public string transactionTitle { get; set; }
         public double amount { get; set; }
-
-        public FriendInfo()
-        {
-        }
     }
 }
