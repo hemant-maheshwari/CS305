@@ -26,7 +26,7 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" /> 
-            <Label Text="Expenses"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
+            <Label Text="Expenses"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="White" FontFamily="MS Gothic" />
         </StackLayout>
         <StackLayout x:Name="WelcomeLine" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
             <Label x:Name="lblWelcome" TextColor="Black" FontSize="25" />

@@ -19,6 +19,8 @@ namespace ExpenseManager.Views
         private UserController userController;
         private TotalController totalController;
 
+        private static string BLANK = "";
+
         public SignUpPage()
         {
             InitializeComponent();
@@ -36,12 +38,12 @@ namespace ExpenseManager.Views
 
         public void verifyUserForm(object sender, EventArgs e) //verifies in sign up form was input correctly
         {
-            if (entryFirstName.Text == " " || entryFirstName.Text == null)
+            if (entryFirstName.Text == BLANK || entryFirstName.Text == null)
             {
                 DisplayAlert("Invalid First Name", "Please enter your first name.", "Okay");
                 entryFirstName.Focus();
             }
-            else if (entryLastName.Text == " " || entryLastName.Text == null)
+            else if (entryLastName.Text == BLANK || entryLastName.Text == null)
             {
                 DisplayAlert("Invalid Last Name", "Please enter your last name.", "Okay");
                 entryLastName.Focus();
@@ -50,31 +52,31 @@ namespace ExpenseManager.Views
             {
                 DisplayAlert("Invalid Email", "Please enter a valid email.", "Okay");
                 entryEmail.Focus();
-                entryEmail.Text = "";
+                entryEmail.Text = BLANK;
             }
-            else if (entryUsername.Text == null || entryUsername.Text == "")
+            else if (entryUsername.Text == null || entryUsername.Text == BLANK)
             {
                 DisplayAlert("Invalid Username", "Please enter a valid username", "Okay");
                 entryUsername.Focus();
             }
-            else if (entryPassword.Text == null || entryPassword.Text == "")
+            else if (entryPassword.Text == null || entryPassword.Text == BLANK)
             {
                 DisplayAlert("Invalid Password", "Please enter a valid password.", "Okay");
                 entryPassword.Focus();
             }
-            else if (entryConfirmPassword.Text == null || entryConfirmPassword.Text == "")
+            else if (entryConfirmPassword.Text == null || entryConfirmPassword.Text == BLANK)
             {
                 DisplayAlert("Invalid Confirmation", "Please enter your password again.", "Okay");
                 entryConfirmPassword.Focus();
-                entryConfirmPassword.Text = "";
+                entryConfirmPassword.Text = BLANK;
             }
             else if (entryConfirmPassword.Text != entryPassword.Text)
             {
                 DisplayAlert("Invalid Password Confirmation", "Passwords do not match. Try again.", "Okay");
                 entryConfirmPassword.Focus();
-                entryConfirmPassword.Text = "";
+                entryConfirmPassword.Text = BLANK;
             }
-            else if (entryPhoneNumber.Text == null || entryPhoneNumber.Text == "")
+            else if (entryPhoneNumber.Text == null || entryPhoneNumber.Text == BLANK)
             {
                 DisplayAlert("Invalid Phone Number", "Please enter a phone number.", "Okay");
                 entryPhoneNumber.Focus();
@@ -83,7 +85,7 @@ namespace ExpenseManager.Views
             {
                 DisplayAlert("Invalid Phone Number", "Invalid phone number. Try again", "Okay");
                 entryPhoneNumber.Focus();
-                entryPhoneNumber.Text = "";
+                entryPhoneNumber.Text = BLANK;
             }
             else
             {

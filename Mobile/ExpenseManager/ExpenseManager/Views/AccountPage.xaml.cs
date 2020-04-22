@@ -20,6 +20,8 @@ namespace ExpenseManager.Views
         private UserController userController;
         private User user;
 
+        private static string BLANK = "";
+
         public AccountPage()        
         {
             InitializeComponent();
@@ -44,12 +46,12 @@ namespace ExpenseManager.Views
 
         public void updateUserForm(object sender, EventArgs e) //verifies if form was input correctly
         {
-            if (entryAccFirstName.Text == " " || entryAccFirstName.Text == null)
+            if (entryAccFirstName.Text == BLANK || entryAccFirstName.Text == null)
             {
                 DisplayAlert("Invalid First Name", "Please enter your first name.", "Okay");
                 entryAccFirstName.Focus();
             }
-            else if (entryAccLastName.Text == " " || entryAccLastName.Text == null)
+            else if (entryAccLastName.Text == BLANK || entryAccLastName.Text == null)
             {
                 DisplayAlert("Invalid Last Name", "Please enter your last name.", "Okay");
                 entryAccLastName.Focus();
@@ -58,9 +60,9 @@ namespace ExpenseManager.Views
             {
                 DisplayAlert("Invalid Email", "Please enter a valid email.", "Okay");
                 entryAccEmail.Focus();
-                entryAccEmail.Text = "";
+                entryAccEmail.Text = BLANK;
             }
-            else if (entryAccPhone.Text == null || entryAccPhone.Text == "")
+            else if (entryAccPhone.Text == null || entryAccPhone.Text == BLANK)
             {
                 DisplayAlert("Invalid Phone Number", "Please enter a phone number.", "Okay");
                 entryAccPhone.Focus();
@@ -69,21 +71,21 @@ namespace ExpenseManager.Views
             {
                 DisplayAlert("Invalid Phone Number", "Invalid phone number. Try again", "Okay");
                 entryAccPhone.Focus();
-                entryAccPhone.Text = "";
+                entryAccPhone.Text = BLANK;
             }
-            else if (entryAccPassword.Text != null && entryAccPassword.Text != "")
+            else if (entryAccPassword.Text != null && entryAccPassword.Text != BLANK)
             {
                 if (entryAccConfirmPassword.Text == null || entryAccConfirmPassword.Text == "")
                 {
                     DisplayAlert("Invalid Confirmation", "Please enter your password again.", "Okay");
                     entryAccConfirmPassword.Focus();
-                    entryAccConfirmPassword.Text = "";
+                    entryAccConfirmPassword.Text = BLANK;
                 }
                 else if (!passwordsMatch(entryAccPassword.Text, entryAccConfirmPassword.Text))
                 {
                     DisplayAlert("Invalid Password Confirmation", "Passwords do not match. Try again.", "Okay");
                     entryAccConfirmPassword.Focus();
-                    entryAccConfirmPassword.Text = "";
+                    entryAccConfirmPassword.Text = BLANK;
                 }
                 else
                 {

@@ -121,7 +121,7 @@ namespace ExpenseManagerWebServiceAPI.Handlers
 
         public User validateUser(string username)
         {
-            User user = null;
+            User user = default(User);
             string connectionString = config.GetConnectionString("DefaultConnection");
             MySqlConnection conn = new MySqlConnection(connectionString);
             MySqlCommand mySqlCommand = new MySqlCommand();

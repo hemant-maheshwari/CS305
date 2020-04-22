@@ -13,6 +13,9 @@ namespace ExpenseManager.Views
     public partial class LoginPage : ContentPage
     {
         private UserController userController;
+
+        private static string BLANK = "";
+
         public LoginPage()
         {
             InitializeComponent();
@@ -35,12 +38,12 @@ namespace ExpenseManager.Views
 
         public void verifyLoginForm(object sender, EventArgs e) //verifies if form was input correctly
         {
-            if (entryUsername.Text == " " || entryUsername.Text == null)
+            if (entryUsername.Text == BLANK || entryUsername.Text == null)
             {
                 DisplayAlert("Invalid username", "Please enter a username", "Okay");
                 entryUsername.Focus();
             }
-            else if (entryPassword.Text == " " || entryPassword.Text == null)
+            else if (entryPassword.Text == BLANK || entryPassword.Text == null)
             {
                 DisplayAlert("Invalid password", "Please enter a password.", "Okay");
                 entryPassword.Focus();
@@ -70,8 +73,8 @@ namespace ExpenseManager.Views
             }catch(Exception e)
             {
                 isActivitySpinnerShowing(false);
-                entryUsername.Text = "";
-                entryPassword.Text = "";
+                entryUsername.Text = BLANK;
+                entryPassword.Text = BLANK;
                 await DisplayAlert("Message", "Error Occured!", "Okay");
                 Debug.WriteLine(e.Message);
             }

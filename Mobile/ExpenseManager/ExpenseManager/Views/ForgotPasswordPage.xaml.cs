@@ -12,6 +12,9 @@ namespace ExpenseManager.Views
     {
         UserController userController;
         User user;
+
+        private static string BLANK = "";
+
         public ForgotPasswordPage()
         {
             InitializeComponent();
@@ -25,10 +28,23 @@ namespace ExpenseManager.Views
             user = new User();
         }
 
-        public async void verifyExistingUsername(object sender, EventArgs e) //checks to see if username exists
+        public void verifyUsernameForm(object sender, EventArgs e)
         {
-            isForgotPasswordLayoutShowing(false);
-            isActivitySpinnerShowing(true);
+            if(entryUsername.Text == null || entryUsername.Text.Equals(BLANK))
+            {
+                DisplayAlert("Invalid Username", "Please enter your username.", "Okay");
+                entryUsername.Focus();
+            }
+            else
+            {
+                isForgotPasswordLayoutShowing(false);
+                isActivitySpinnerShowing(true);
+                checkExistingUsername();
+            }
+        }
+
+        private async void checkExistingUsername() //checks to see if username exists
+        {  
             try
             {
                 User completeUser = await getUserFromUsername(entryUsername.Text);
@@ -47,6 +63,7 @@ namespace ExpenseManager.Views
             }catch(Exception ex)
             {
                 isActivitySpinnerShowing(false);
+                isForgotPasswordLayoutShowing(true);
                 await DisplayAlert("Error", "Error occurred.", "Okay");
                 Debug.WriteLine(ex.Message);
             }
@@ -58,11 +75,23 @@ namespace ExpenseManager.Views
         }
 
 
-        public async void verifyUpdatedPassword(object sender, EventArgs e) //verifies in passwords were input correctly
+        public void verifyUpdatedPassword(object sender, EventArgs e) //verifies in passwords were input correctly
         {
-            if (passwordsMatch(entryNewPassword.Text, entryConfirmNewPassword.Text).Equals(false))
+            if(entryNewPassword.Text == null || entryNewPassword.Text.Equals(BLANK))
             {
-                await DisplayAlert("Invalid Password", "Passwords do not match.", "Okay");
+                DisplayAlert("Invalid Password", "Please enter your new password.", "Okay");
+                entryNewPassword.Focus();
+            }
+            else if(entryConfirmNewPassword.Text == null || entryConfirmNewPassword.Text.Equals(BLANK))
+            {
+                DisplayAlert("Invalid Confirmation", "Please confirm your new password.", "Okay");
+                entryConfirmNewPassword.Focus();
+            }
+            else if (passwordsMatch(entryNewPassword.Text, entryConfirmNewPassword.Text).Equals(false))
+            {
+                entryConfirmNewPassword.Text = BLANK;
+                entryNewPassword.Text = BLANK;
+                DisplayAlert("Invalid Password", "Passwords do not match.", "Okay");
             }
             else
             {
@@ -115,7 +144,7 @@ namespace ExpenseManager.Views
                 forgotPasswordLoader.IsEnabled = true;
 
             }
-            if (status.Equals(false))
+            else
             {
                 activitySpinnerLayout.IsVisible = false;
                 forgotPasswordLoader.IsVisible = false;
@@ -132,7 +161,7 @@ namespace ExpenseManager.Views
                 forgotPasswordLayout.IsVisible = true;
 
             }
-            if (status.Equals(false))
+            else
             {
                 forgotPasswordLayout.IsVisible = false;
                 forgotPasswordLayout.IsEnabled = false;
@@ -147,7 +176,7 @@ namespace ExpenseManager.Views
                 updatePasswordLayout.IsVisible = true;
 
             }
-            if (status.Equals(false))
+            else
             {
                 updatePasswordLayout.IsVisible = false;
                 updatePasswordLayout.IsEnabled = false;
