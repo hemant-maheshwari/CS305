@@ -1,5 +1,6 @@
 ﻿using ExpenseManager.Models;
 using ExpenseManager.Service;
+using ExpenseManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,10 @@ namespace ExpenseManager.Controller
         public TransactionController()
         {
             restAPIService = new RestAPIService();
+        }
+	public async Task<List<ActivityViewModel>> getAllActivity(int userId) { 
+
+            return await restAPIService.getAllActivityAsnyc(userId);
         }
         //CRUD function - RestAPICRUDService
         //create, update, delete will return bool

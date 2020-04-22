@@ -18,7 +18,10 @@ namespace ExpenseManager.Views
     public partial class AddFriendPage : ContentPage
     {
         private UserController userController;
+        private FriendController friendController;
         private User user;
+        
+        
         public AddFriendPage()
         {
             InitializeComponent();
@@ -28,15 +31,16 @@ namespace ExpenseManager.Views
         {
             BackgroundColor = Constants.backgroundColor;
             userController = new UserController();
+            friendController = new FriendController();
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
         }
-        public void goToUserAccount(object sender, EventArgs e) //navigate to user account page
+        public void goToHomePage(object sender, EventArgs e) //navigate to user home page
         {
-            Application.Current.MainPage = new AccountPage();
+            Application.Current.MainPage = new NavPage();
         }
         public void searchButtonPressed(object sender, EventArgs e) //function when search button is pressed
         {
@@ -53,6 +57,24 @@ namespace ExpenseManager.Views
                 isActivitySpinnerShowing(true);
                 searchFriend();
             }
+        }
+
+        public async void addFriend(object sender, EventArgs e) 
+        {
+            string frienduserName = foundFriend.Text;
+            User friendUser = await userController.getUserFromUsername(frienduserName);
+            Friend friend = new Friend(user.userId, friendUser.userId, 0);
+            bool flag = await friendController.createModel(friend);
+            if (flag) {
+                isActivitySpinnerShowing(true);
+                await DisplayAlert("Message","Friend Added Succesfully", "Okay");
+                App.Current.MainPage = new NavPage();
+            }else
+            {
+                await DisplayAlert("Message", "Error Occured", "Okay");
+                App.Current.MainPage = new AddFriendPage();
+            }
+
         }
 
         private async void searchFriend() // searches database for matching user

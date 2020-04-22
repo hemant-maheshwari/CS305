@@ -2,7 +2,9 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
     mc:Ignorable="d"
     x:Class="ExpenseManager.Views.ExpensesPage"
              x:Name="expensesPage"
@@ -29,17 +31,18 @@
             <Label Text="Welcome User" TextColor="Black" FontSize="25" />
             <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
         </StackLayout>
+        <StackLayout>
         <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
+        </StackLayout>
+        <StackLayout x:Name="totalAmounts" IsEnabled="True" IsVisible="True">
         <StackLayout Padding="5">
             <Frame OutlineColor="Black" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
                     <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="IncomeAmount">
-
-                        </Entry>
-                    </StackLayout>
+                        <Label x:Name="lblIncome" Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
+                            <Label x:Name="IncomeAmount" Text=""/>
+                        </StackLayout>
                 </StackLayout>
             </Frame>
         </StackLayout>
@@ -48,14 +51,13 @@
                 <StackLayout Orientation="Horizontal">
                     <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
                     <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="ExpenseAmount">
-
-                        </Entry>
-                    </StackLayout>
+                        <Label x:Name="lblExpense" Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
+                            <Label x:Name="ExpenseAmount" Text=""/>
+                        </StackLayout>
                 </StackLayout>
             </Frame>
         </StackLayout>
-    </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

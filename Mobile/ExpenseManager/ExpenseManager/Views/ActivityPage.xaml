@@ -28,22 +28,17 @@
             <StackLayout Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
                 <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
             </StackLayout>
-            <StackLayout>
-                <ListView Grid.Row="1" x:Name="MainListView"  ItemsSource="{Binding Series}">
+            <StackLayout Orientation="Vertical" x:Name="activityLayout"  IsVisible="True" IsEnabled="True" HorizontalOptions="CenterAndExpand">
+                <ListView x:Name="activityListView" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.View>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="60"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding Image}" 
-                                               Aspect="AspectFill" />
-                                       
-                                    </Grid>
-                                </ViewCell.View>
+                                <ContentView>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label x:Name="lblLirstName" Text="{Binding source}"  TextColor="Black" FontSize="Small"/>
+                                        <Label x:Name="lblLastName" Text="{Binding transac}"  TextColor="Black" FontSize="Small"/>
+                                    </StackLayout>
+                                </ContentView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

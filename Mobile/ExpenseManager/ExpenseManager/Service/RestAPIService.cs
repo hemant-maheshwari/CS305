@@ -33,6 +33,13 @@ namespace ExpenseManager.Service
             return friendViewModelArray.ToList<FriendViewModel>();
 
         }
+        private List<ActivityViewModel> getActivityViewModelFromResponse(Response response)
+        {
+            string stringActivityList = response.data;
+            ActivityViewModel[] activityViewModelArray = JsonConvert.DeserializeObject<ActivityViewModel[]>(stringActivityList);
+            return activityViewModelArray.ToList<ActivityViewModel>();
+
+        }
 
 
         public async Task<bool> checkUsernameAsync(string username) {
@@ -99,6 +106,21 @@ namespace ExpenseManager.Service
             {
                 Debug.WriteLine("Error Occured!");
                 return default(List<FriendViewModel>);
+            }
+        }
+	public async Task<List<ActivityViewModel>> getAllActivityAsnyc(int userId)
+        {
+            string url = WEB_API_BASE_URL + "transaction/getAllActivity/" + userId;
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                Response responseObject = await getHTTPResponse(response);
+                return getActivityViewModelFromResponse(responseObject);
+            }
+            else
+            {
+                Debug.WriteLine("Error Occured!");
+                return default(List<ActivityViewModel>);
             }
         }
 
