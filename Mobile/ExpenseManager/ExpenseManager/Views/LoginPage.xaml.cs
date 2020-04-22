@@ -19,7 +19,7 @@ namespace ExpenseManager.Views
             Init();
         }
 
-        public void Init()
+        public void Init() //initializes components on startup
         {
             BackgroundColor = Constants.backgroundColor;
             lblUsername.TextColor = Constants.initialScreensTextColor;
@@ -28,12 +28,12 @@ namespace ExpenseManager.Views
             userController = new UserController();
         }
 
-        public void goToSignUpPage(object sender, EventArgs e)
+        public void goToSignUpPage(object sender, EventArgs e) //takes user to the sign up page
         {
             App.Current.MainPage = new SignUpPage();
         }
 
-        public void verifyLoginForm(object sender, EventArgs e)
+        public void verifyLoginForm(object sender, EventArgs e) //verifies if form was input correctly
         {
             if (entryUsername.Text == " " || entryUsername.Text == null)
             {
@@ -52,7 +52,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async void signIn()
+        private async void signIn() //creates a user object with username and password checks for existence in database
         {
             User user = new User(entryUsername.Text, entryPassword.Text);
             try { 
@@ -77,12 +77,12 @@ namespace ExpenseManager.Views
             }
         }
 
-        private async Task<User> checkUserExistence(User user)
+        private async Task<User> checkUserExistence(User user) //sends user to controller to see if it exists in database
         {
             return await userController.checkUser(user);
         }
 
-        private void isActivitySpinnerShowing(bool status)
+        private void isActivitySpinnerShowing(bool status) //displays/hides activity spinner
         {
             if (status.Equals(true))
             {
@@ -105,8 +105,8 @@ namespace ExpenseManager.Views
 
             }
         }
-
-        public void goToForgotPasswordPage(object sender, EventArgs e)
+ 
+        public void goToForgotPasswordPage(object sender, EventArgs e) //takes user to forgot password page
         {
             App.Current.MainPage = new ForgotPasswordPage();
         }
