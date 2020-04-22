@@ -26,14 +26,14 @@ namespace ExpenseManager.Views
             Init();
         }  
 
-        public void Init()
+        public void Init() //initilazes screen components
         {
             BackgroundColor = Constants.backgroundColor;
             totalController = new TotalController();
 
         }
 
-        protected async override void OnAppearing()
+        protected async override void OnAppearing() //data when screen is shown
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;

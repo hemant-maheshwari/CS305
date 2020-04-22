@@ -26,7 +26,7 @@ namespace ExpenseManager.Service
             return user;
         }
 
-        private List<FriendViewModel> getFriendViewModelFromResponse(Response response)
+        private List<FriendViewModel> getFriendViewModelFromResponse(Response response) // getting a list of friend view model from web api back to controller
         {
             string stringFriendList = response.data;
             FriendViewModel[] friendViewModelArray = JsonConvert.DeserializeObject<FriendViewModel[]>(stringFriendList);
@@ -34,7 +34,7 @@ namespace ExpenseManager.Service
 
         }
 
-        private List<ActivityViewModel> getActivityViewModelFromResponse(Response response)
+        private List<ActivityViewModel> getActivityViewModelFromResponse(Response response)  // getting a list of activity view model from web api back to controller
         {
             string stringActivityList = response.data;
             ActivityViewModel[] activityViewModelArray = JsonConvert.DeserializeObject<ActivityViewModel[]>(stringActivityList);
@@ -92,7 +92,7 @@ namespace ExpenseManager.Service
             }
         }
 
-        public async Task<List<FriendViewModel>> getAllFriendsInfoAsync(int userId)
+        public async Task<List<FriendViewModel>> getAllFriendsInfoAsync(int userId)   // requesting a list of friend view model from web api by passing userID
         {
             string url = WEB_API_BASE_URL + "friend/getAllFriendInfo/" + userId;
             HttpResponseMessage response = await httpClient.GetAsync(url);
@@ -108,7 +108,7 @@ namespace ExpenseManager.Service
             }
         }
 
-        public async Task<List<ActivityViewModel>> getAllActivityAsnyc(int userId)
+        public async Task<List<ActivityViewModel>> getAllActivityAsnyc(int userId) // requesting a list of activity view model from web api by passing userID
         {
             string url = WEB_API_BASE_URL + "transaction/getAllActivity/" + userId;
             HttpResponseMessage response = await httpClient.GetAsync(url);

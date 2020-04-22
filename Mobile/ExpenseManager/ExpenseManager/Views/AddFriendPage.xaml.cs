@@ -33,7 +33,7 @@ namespace ExpenseManager.Views
             userController = new UserController();
             friendController = new FriendController();
         }
-        protected override void OnAppearing()
+        protected override void OnAppearing() //data when screen is shown
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
@@ -59,7 +59,7 @@ namespace ExpenseManager.Views
             }
         }
 
-        public async void addFriend(object sender, EventArgs e) 
+        public async void addFriend(object sender, EventArgs e)  //add friend info sent to controller
         {
             string frienduserName = foundFriend.Text;
             User friendUser = await userController.getUserFromUsername(frienduserName);

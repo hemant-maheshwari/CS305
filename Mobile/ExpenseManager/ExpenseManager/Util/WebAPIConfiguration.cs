@@ -7,8 +7,8 @@ namespace ExpenseManager.Util
 {
     public class WebAPIConfiguration
     {
-        protected static string IP = "192.168.1.13";
-        protected static string PORT = "45458";
+        protected static string IP = "10.246.16.24";
+        protected static string PORT = "45455";
         protected static string WEB_API_BASE_URL = "https://" + IP + ":" + PORT + "/v1/api/";
         protected static string HOSTNAME = "CN=" + IP;
         protected static string LOCALHOST = "CN=localhost";
@@ -26,9 +26,9 @@ namespace ExpenseManager.Util
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
             {
-                if (cert.Issuer.Equals(HOSTNAME) || cert.Issuer.Equals(LOCALHOST))
+               // if (cert.Issuer.Equals(HOSTNAME) || cert.Issuer.Equals(LOCALHOST))
                     return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
+               // return errors == System.Net.Security.SslPolicyErrors.None;
             };
             return handler;
         }

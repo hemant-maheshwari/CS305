@@ -16,7 +16,7 @@ namespace ExpenseManager.Controller
             restAPIService = new RestAPIService();
         }
 
-        public async Task<List<ActivityViewModel>> getAllActivity(int userId) {
+        public async Task<List<ActivityViewModel>> getAllActivity(int userId) {  // calling on rest api to return a list of activity view model
             return await restAPIService.getAllActivityAsnyc(userId);
         }
 

@@ -25,7 +25,7 @@ namespace ExpenseManager.Views
 
         }
 
-        public void Init()
+        public void Init()  // initialize screen components
         {
             BackgroundColor = Constants.backgroundColor;
             boxViewFriends.Color = Constants.logoColorYellow;
@@ -35,7 +35,7 @@ namespace ExpenseManager.Views
 
 
 
-        protected async override void OnAppearing()
+        protected async override void OnAppearing() //data appearing when screen shows
         {
             base.OnAppearing();
             user = Application.Current.Properties[CommonSettings.GLOBAL_USER] as User;
@@ -43,7 +43,7 @@ namespace ExpenseManager.Views
             friendsListView.ItemsSource = friends;
         }
 
-        public void addFriendButton(object sender, EventArgs e)
+        public void addFriendButton(object sender, EventArgs e) //add friend button
         {
             App.Current.MainPage = new AddFriendPage();
         }
