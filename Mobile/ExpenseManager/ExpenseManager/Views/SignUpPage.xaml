@@ -7,6 +7,7 @@
              x:Class="ExpenseManager.Views.SignUpPage">
     
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout x:Name="MasterLayout">
             
             <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
@@ -37,5 +38,6 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage> 

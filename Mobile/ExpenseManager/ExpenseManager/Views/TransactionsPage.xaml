@@ -33,6 +33,7 @@
                 <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
                 <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12"/>
             </StackLayout>
+            
             <StackLayout x:Name="addTransactionLayout">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Title: " TextColor="White" FontSize="25"/>
@@ -40,16 +41,16 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
-                    <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedIndexChanged="showHideFriendsPicker">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Expense</x:String>
-                                <x:String>Income</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                        <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedIndexChanged="showHideFriendsPicker">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Expense</x:String>
+                                    <x:String>Income</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+                <StackLayout Orientation="Horizontal"> 
                     <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
                     <Entry x:Name="entryTransactionAmount" TextColor="White" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
                 </StackLayout>

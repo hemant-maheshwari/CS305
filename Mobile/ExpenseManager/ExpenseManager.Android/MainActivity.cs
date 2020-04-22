@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace ExpenseManager.Droid
 {
-    [Activity(Label = "ExpenseManager", Icon = "@drawable/LoginIcon", Theme = "@style/MainTheme" , ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ExpenseManager", Icon = "@drawable/LoginIcon", Theme = "@style/MainTheme" , ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullSensor)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

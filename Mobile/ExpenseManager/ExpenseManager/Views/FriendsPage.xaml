@@ -9,6 +9,7 @@
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <StackLayout.Padding>
                 <OnIdiom x:TypeArguments="Thickness" >
@@ -52,6 +53,6 @@
             </StackLayout>
             <Button x:Name="btnaddfriend" Text="Add Friend" Clicked="addFriendButton"/>
         </StackLayout>
-
+        </ScrollView>
     </ContentPage.Content>
  </ContentPage>

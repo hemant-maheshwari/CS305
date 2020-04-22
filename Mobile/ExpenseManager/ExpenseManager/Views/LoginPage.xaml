@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExpenseManager.Views.LoginPage">
     <ContentPage.Content>
+        <ScrollView>
          <StackLayout x:Name="MasterLayout">
 
              <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
@@ -31,5 +32,6 @@
                 </StackLayout>
             </StackLayout>
          </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

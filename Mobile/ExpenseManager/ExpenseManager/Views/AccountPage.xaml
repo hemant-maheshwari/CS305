@@ -9,6 +9,7 @@
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <StackLayout.Padding>
                 <OnIdiom x:TypeArguments="Thickness" >
@@ -43,5 +44,6 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

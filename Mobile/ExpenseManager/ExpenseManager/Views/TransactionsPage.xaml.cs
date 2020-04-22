@@ -277,14 +277,23 @@ namespace ExpenseManager.Views
         {
             if(imagePath != null)
             {
-                using (var image = File.OpenRead(imagePath))                {                    using (MemoryStream m = new MemoryStream())                    {
-                        image.CopyTo(m);                        byte[] imageBytes = m.ToArray();                        string base64String = Convert.ToBase64String(imageBytes);                        return base64String;                    }                }
+                using (var image = File.OpenRead(imagePath))
+                {
+                    using (MemoryStream m = new MemoryStream())
+                    {
+                        image.CopyTo(m);
+                        byte[] imageBytes = m.ToArray();
+                        string base64String = Convert.ToBase64String(imageBytes);
+                        return base64String;
+                    }
+                }
             }
             else
             {
                 return "";
             }
-                    }
+            
+        }
 
         public interface CameraInterface //interface for selecting picture
         {

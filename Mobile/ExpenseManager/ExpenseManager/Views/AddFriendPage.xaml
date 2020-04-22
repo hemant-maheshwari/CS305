@@ -7,7 +7,7 @@
              x:Class="ExpenseManager.Views.AddFriendPage">
     
     <ContentPage.Content>
-        
+        <ScrollView>
         
     <StackLayout Orientation="Vertical">
         <StackLayout.Padding>
@@ -33,5 +33,6 @@
             <Button x:Name="btnBackHome" Text="Back to Home Page" Clicked="goToHomePage" Margin="0,600,0,0"/>
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
