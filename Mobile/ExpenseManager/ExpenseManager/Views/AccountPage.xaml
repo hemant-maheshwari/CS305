@@ -19,7 +19,7 @@
             </StackLayout.Padding>
             <StackLayout Orientation="Horizontal">
                 <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"/>
-                <Label Text="Account"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="40" TextColor="White" FontFamily="MS Gothic"/>
+                <Label Text="Account"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="Large" TextColor="White" FontFamily="MS Gothic"/>
             </StackLayout>
             <StackLayout x:Name="Welcome4" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
                 <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>

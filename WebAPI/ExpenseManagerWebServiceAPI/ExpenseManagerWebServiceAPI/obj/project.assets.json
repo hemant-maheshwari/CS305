@@ -7312,24 +7312,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/adriangallant/.nuget/packages/": {}
+    "C:\\Users\\heman\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adriangallant/ExpenseManager/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
+      "projectUniqueName": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
       "projectName": "ExpenseManagerWebServiceAPI",
-      "projectPath": "/Users/adriangallant/ExpenseManager/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI.csproj",
-      "packagesPath": "/Users/adriangallant/.nuget/packages/",
-      "outputPath": "/Users/adriangallant/ExpenseManager/CS305/WebAPI/ExpenseManagerWebServiceAPI/ExpenseManagerWebServiceAPI/obj/",
+      "projectPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI.csproj",
+      "packagesPath": "C:\\Users\\heman\\.nuget\\packages\\",
+      "outputPath": "C:\\Xamarin\\ExpenseManager\\CS305\\WebAPI\\ExpenseManagerWebServiceAPI\\ExpenseManagerWebServiceAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/adriangallant/.config/NuGet/NuGet.Config"
+        "C:\\Users\\heman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7377,7 +7384,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

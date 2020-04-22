@@ -26,21 +26,21 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"/>
-                <Label x:Name="lblTransactionsHeader" Text="Transactions"  Margin="30,0,0,0" FontAttributes="Bold" FontSize="35" TextColor="White" FontFamily="MS Gothic"  />
+                <Label x:Name="lblTransactionsHeader" Text="Transactions"  Margin="30,0,0,0" FontAttributes="Bold" FontSize="Large" TextColor="White" FontFamily="MS Gothic"  />
             </StackLayout>
 
             <StackLayout x:Name="Welcome2" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
                 <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-                <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="12"/>
+                <Label x:Name="lblAddTransaction" Text="Add a Transaction" TextColor="White" FontSize="Medium"/>
             </StackLayout>
             
             <StackLayout x:Name="addTransactionLayout">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Title: " TextColor="White" FontSize="25"/>
+                    <Label Text="Title: " TextColor="White" FontSize="Body" Margin="0,10"/>
                     <Entry x:Name="entryTranscationTitle" Placeholder="Enter Title" TextColor="White" PlaceholderColor="LightGray" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Type: " TextColor="White" FontSize="25" Margin="0,10"/>
+                    <Label Text="Type: " TextColor="White" FontSize="Body" Margin="0,10"/>
                         <Picker x:Name="pickerTransactionType" Title="Select a transaction type" TitleColor="LightGray" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedIndexChanged="showHideFriendsPicker">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
@@ -51,11 +51,11 @@
                         </Picker>
                     </StackLayout>
                 <StackLayout Orientation="Horizontal"> 
-                    <Label Text="Amount: " TextColor="White" FontSize="25" Margin="0,10"/>
+                    <Label Text="Amount: " TextColor="White" FontSize="Body" Margin="0,10"/>
                     <Entry x:Name="entryTransactionAmount" TextColor="White" Placeholder="Enter amount" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric"/>
                 </StackLayout>
                 <StackLayout x:Name="friendsPickerLayout">
-                    <Picker x:Name="friendsPicker" TextColor="White" Title="Select a friend to add" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Picker x:Name="friendsPicker" TextColor="White" Title="Select a friend to add" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="Body"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Receipt" TextColor="White" HorizontalTextAlignment="Center" FontSize="20" Margin="0,5,0,0"/>
