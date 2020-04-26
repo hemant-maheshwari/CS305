@@ -12,5 +12,6 @@ namespace ExpenseManagerWebServiceAPI.Controllers
         JsonResult createTransaction(Transaction transaction);
         JsonResult updateTransaction(Transaction transaction);
         JsonResult deleteTransaction(int userId);
+        JsonResult getAllActivity(int userId);
     }
 }

@@ -1,249 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    x:Class="ExpenseManager.Views.ExpensesPage" 
-    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-    android:TabbedPage.ToolbarPlacement="Bottom" BarBackgroundColor="WhiteSmoke">
-
-<StackLayout.Padding>
-    <OnIdiom x:TypeArguments="Thickness" >
-        <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
-        <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
-    </OnIdiom>
-</StackLayout.Padding>
-
-<!--Start of Expense Class-->
-<ContentPage Title="Expenses" IconImageSource="expenseIcon.png">
-   <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
-            <Label Text="Expenses"  Margin="65,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
-        </StackLayout>
-       
-        <StackLayout x:Name="WelcomeLine" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="IncomeAmount">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="ExpenseAmount">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-   </StackLayout>
-</ContentPage>
-<!--End of Expenses Page-->           
-                
-                
-<!--Start of Activity Page-->
-<ContentPage Title="Activity" IconImageSource="activityIcon.png"  >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
-            <Label Text="Activity"  Margin="65,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome1" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Income1">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense1">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-    </StackLayout>
-</ContentPage>
-<!--End Of Activity Page-->
-
-                
-                
-<!--Start of Transactions Page-->
-<ContentPage Title="Transactions" IconImageSource="transactionIcon.png" >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"         />
-            <Label Text="Transactions"  Margin="65,0,0,0" FontAttributes="Bold" FontSize="35" TextColor="#2E5B9F" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome2" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Income2">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense2">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-    </StackLayout>
-</ContentPage>
-<!--End of Transaction Page-->
-
-                
-                
-<!--Start of Friends Page-->
-<ContentPage Title="Friends" IconImageSource="friendIcon.png" >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"         />
-            <Label Text="Friends"  Margin="65,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome3" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Income3">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense3">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-    </StackLayout>
-</ContentPage>
-<!--End Of Friends Page-->
-
-                
-<!--Start of Account Page-->
-<ContentPage Title="Account" IconImageSource="accountIcon.png"  >
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0"         />
-            <Label Text="Account"  Margin="65,0,0,0" FontAttributes="Bold" FontSize="40" TextColor="#2E5B9F" FontFamily="MS Gothic"  />
-        </StackLayout>
-
-        <StackLayout x:Name="Welcome4" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
-            <Label Text="Welcome User" TextColor="Black" FontSize="25" />
-            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
-        </StackLayout>
-
-        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Income4">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-
-        <ContentView Padding="5">
-            <Frame OutlineColor="Black" Padding="10">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
-                    <StackLayout>
-                        <Label Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="Expense4">
-
-                        </Entry>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </ContentView>
-    </StackLayout>
-</ContentPage>
-<!--End Of Account Page-->
     
-</TabbedPage>
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    x:Class="ExpenseManager.Views.ExpensesPage"
+             x:Name="expensesPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    
+    <ContentPage.Content>
+        <ScrollView>
+    <StackLayout>
+        <StackLayout.Padding>
+            <OnIdiom x:TypeArguments="Thickness" >
+                <OnIdiom.Phone>40,40,40,0</OnIdiom.Phone>
+                <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+            </OnIdiom>
+        </StackLayout.Padding>
+        <StackLayout x:Name="activitySpinnerExpensesLayout" IsVisible="False" IsEnabled="False">
+            <ActivityIndicator x:Name="updateExpensesLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+            <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" /> 
+            <Label Text="Expenses"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
+        </StackLayout>
+        <StackLayout x:Name="WelcomeLine" Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
+            <Label x:Name="lblWelcome" TextColor="Black" FontSize="25" />
+            <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
+        </StackLayout>
+        <StackLayout>
+        <Image Source="blank.png" WidthRequest="300" HeightRequest="200"/>
+        </StackLayout>
+        <StackLayout x:Name="totalAmounts" IsEnabled="True" IsVisible="True">
+        <StackLayout Padding="5">
+            <Frame OutlineColor="Black" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <ImageButton Source="moneyIn.png" WidthRequest="60" HeightRequest="60" />
+                    <StackLayout>
+                        <Label x:Name="lblIncome" Text="Income: " FontSize="22" VerticalOptions="StartAndExpand" />
+                            <Label x:Name="lblIncomeAmount"/>
+                        </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <StackLayout Padding="5">
+            <Frame OutlineColor="Black" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <ImageButton Source="moneyOut.png" WidthRequest="60" HeightRequest="60" />
+                    <StackLayout>
+                        <Label x:Name="lblExpense" Text="Expense: " FontSize="22" VerticalOptions="StartAndExpand" />
+                            <Label x:Name="lblExpenseAmount"/>
+                        </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

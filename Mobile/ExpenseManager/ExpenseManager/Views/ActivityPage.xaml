@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ExpenseManager.Views.ActivityPage"
+             x:Name="activityPage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <ScrollView>
+    <StackLayout>
+        <StackLayout.Padding>
+            <OnIdiom x:TypeArguments="Thickness" >
+                <OnIdiom.Phone>40,40,40,0</OnIdiom.Phone>
+                <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+            </OnIdiom>
+        </StackLayout.Padding>
+        <StackLayout x:Name="activitySpinnerActivityLayout" IsVisible="False" IsEnabled="False">
+                <ActivityIndicator x:Name="updateActivityLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+                <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="LoginIcon.png" HeightRequest="60"  Margin="-5,-5,0,0" Grid.Row="0" Grid.Column="0" />
+                <Label Text="Activity"  Margin="40,0,0,0" FontAttributes="Bold" FontSize="45" TextColor="#2E5B9F" FontFamily="MS Gothic" />
+            </StackLayout>
+            <StackLayout Margin="0,0,0,5" Grid.Row="0" Grid.Column="0">
+                <BoxView Color="DarkOrange" WidthRequest ="200" HeightRequest="2"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" x:Name="activityLayout"  IsVisible="True" IsEnabled="True" HorizontalOptions="CenterAndExpand">
+                <ListView x:Name="activityListView" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label x:Name="lblLirstName" Text="{Binding source}"  TextColor="Black" FontSize="Small"/>
+                                        <Label x:Name="lblLastName" Text="{Binding transac}"  TextColor="Black" FontSize="Small"/>
+                                    </StackLayout>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ExpenseManager.Views.AddFriendPage">
+    
+    <ContentPage.Content>
+        <ScrollView>
+        
+    <StackLayout Orientation="Vertical">
+        <StackLayout.Padding>
+            <OnIdiom x:TypeArguments="Thickness" >
+                <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
+                <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+            </OnIdiom>
+        </StackLayout.Padding>
+
+        <StackLayout x:Name="activitySpinnerAddFriendLayout" IsVisible="False" IsEnabled="False">
+            <ActivityIndicator x:Name="addFriendLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+            <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+        </StackLayout>
+
+        <StackLayout x:Name="addFriendLayout" IsEnabled="True" IsVisible="True" Orientation="Vertical">
+
+            <SearchBar x:Name="addFriendPageBar" Placeholder="Search Username"  BackgroundColor="LightSlateGray" SearchButtonPressed="searchButtonPressed"/>
+
+                <Label x:Name="instruction" Text="TAP ON USER TO ADD FRIEND"/>
+                <Button x:Name="foundFriend" Text="" BorderColor="DarkOrange" BackgroundColor="Transparent" CornerRadius="20" TextColor="Black" IsVisible="False" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Clicked="addFriend"/>
+            
+            </StackLayout>
+            <Button x:Name="btnBackHome" Text="Back to Home Page" Clicked="goToHomePage" Margin="0,600,0,0"/>
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

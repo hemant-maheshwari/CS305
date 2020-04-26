@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{6065D885-3708-4AF3-96E7-2F9904625571}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManagerWebServiceAPI/Controllers/TransactionController.cs">
+    <Files>
+      <File FileName="ExpenseManagerWebServiceAPI/Controllers/TransactionController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ExpenseManagerWebServiceAPI" expanded="True">
+            <Node name="ExpenseManagerWebServiceAPI" expanded="True" selected="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Handlers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManagerWebServiceAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

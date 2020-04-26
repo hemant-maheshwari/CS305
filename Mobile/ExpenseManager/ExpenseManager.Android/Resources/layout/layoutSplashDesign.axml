@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:background="#FFFFFF"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:minWidth="25px"
+	android:minHeight="25px">
+
+	<ImageView
+		android:src="@drawable/loader"
+		android:layout_width="match_parent"
+		android:layout_height="576.5dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/imageView1"
+		android:contentDescription="@android:string/yes"/>
+
+</LinearLayout>

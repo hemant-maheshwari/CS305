@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ExpenseManager.Views"
+            mc:Ignorable="d"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"  BarBackgroundColor="White" BarTextColor="Black"  
+             x:Class="ExpenseManager.Views.NavPage"
+            NavigationPage.HasNavigationBar="False">
+
+    <NavigationPage Title="Expenses" IconImageSource="expenseIcon.png">
+        <x:Arguments>
+            <local:ExpensesPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Activity" IconImageSource="activityIcon.png">
+        <x:Arguments>
+            <local:ActivityPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Friends" IconImageSource="friendIcon.png">
+        <x:Arguments>
+            <local:FriendsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Transactions" IconImageSource="transactionIcon.png">
+        <x:Arguments>
+            <local:TransactionsPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Account" IconImageSource="accountIcon.png">
+        <x:Arguments>
+            <local:AccountPage />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

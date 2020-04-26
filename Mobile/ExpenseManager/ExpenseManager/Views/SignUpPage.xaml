@@ -7,6 +7,7 @@
              x:Class="ExpenseManager.Views.SignUpPage">
     
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout x:Name="MasterLayout">
             
             <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
@@ -20,18 +21,23 @@
                         <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
                     </OnIdiom>
                 </StackLayout.Padding>
-
-                <ActivityIndicator x:Name="Spinner" Color="DarkOrange" IsRunning="False"/>
-                
-                <Entry Placeholder="First Name" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Entry Placeholder="Last Name" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Entry Placeholder="Email" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Entry Placeholder="Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Entry Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Entry Placeholder= "Enter Phone Number" PlaceholderColor="LightGray" TextColor="White"></Entry>
-                <Button Text="Sign Up" ></Button >
-                <Label Text="Already have account? Sign In" TextColor="DarkOrange"></Label>
+                <StackLayout x:Name="activitySpinnerLayout" IsVisible="False" IsEnabled="False">
+                    <ActivityIndicator x:Name="signUpLoader" Color="DarkOrange" IsRunning="False" IsEnabled="False" BackgroundColor="Transparent" IsVisible="False"/>
+                    <Label Text="Please wait..." TextColor="White" Margin="0,60,0,0" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="End"/>
+                </StackLayout>
+                <StackLayout x:Name="signUpLayout" IsVisible="True" IsEnabled="True">
+                    <Entry x:Name="entryFirstName" Placeholder="First Name" PlaceholderColor="LightGray" TextColor="White"/>
+                    <Entry x:Name="entryLastName" Placeholder="Last Name" PlaceholderColor="LightGray" TextColor="White"/>
+                    <Entry x:Name="entryEmail" Placeholder="Email" PlaceholderColor="LightGray" TextColor="White" Keyboard="Email"/>
+                    <Entry x:Name="entryPhoneNumber" Placeholder= "Enter Phone Number" PlaceholderColor="LightGray" TextColor="White" Keyboard="Telephone"/>
+                    <Entry x:Name="entryUsername" Placeholder="Username" PlaceholderColor="LightGray" TextColor="White"/>
+                    <Entry x:Name="entryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
+                    <Entry x:Name="entryConfirmPassword" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="LightGray" TextColor="White"/>
+                    <Button x:Name="btnSignUp" Text="Sign Up" Clicked="verifyUserForm"/>
+                    <Button BorderColor="Transparent" BackgroundColor="Transparent" Text="Already have account? Sign In" TextColor="DarkOrange" FontSize="12" Clicked="goToLoginPage"/>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage> 
